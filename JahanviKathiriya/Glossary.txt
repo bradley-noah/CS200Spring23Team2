@@ -1,0 +1,22 @@
+Glossary:
+
+Member: An entity that is enlisted to receive services provided by ChocAn.
+Member Number: A unique 9-digit number attributed to all providers.
+Member Report: A report sent to a member that details the services provided by ChocAn.
+
+Provider: A health care professional who provides services to ChocAn members.
+Provider Number: A unique 9-digit number attributed to all providers.
+Provider Directory: A file that contains all appropriate six-digit service codes and fees corresponding to a service.
+Service Code: A six-digit number that specifies the service provided.
+Provider’s Terminal: A digital terminal for providers to handle transactions for any services provided to a member.
+Provider Report: A report sent to a provider that details the services they provided to members of ChocAn.
+
+Manager: A person in charge of managing several different providers under ChocAn.
+Manager’s Terminal: A digital terminal for managers to handle managerial tasks.
+Summary Report: a report, given to the manager, which lists every provider to be paid a particular week, the number of consultations each had, and their total fee for that week. It also lists the total number of providers who provided services, the total number of consultations, and the overall fee total are printed.
+
+ChocAn Data Center: The main computer that holds all the information for ChocAn organization including member data, provider data, transaction data, etc.
+Interactive Mode: a mode available in the software that allows records of members and providers to be updated, including the addition of new entities and deletion of any entity that resigned.
+EFT Data: an electronic transaction of funds.
+
+
