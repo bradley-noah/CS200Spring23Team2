@@ -1,5 +1,6 @@
 html{
     cursor: url('pointer_UA.png'), auto;
+    overflow-x: hidden; 
 }
 
 body{
@@ -106,6 +107,11 @@ table > tbody > tr:nth-of-type(1) {
     position: -webkit-sticky;
     position: sticky;
     bottom: 0;
+    margin-top: -50vw;
+}
+
+.bucket{
+    width: 85vw;
 }
 
 div[role="footer"]{
