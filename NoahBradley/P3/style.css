@@ -1,0 +1,16 @@
+table{
+    background: aliceblue;
+}
+
+th, td{
+    border-bottom: solid;
+	border-left: solid;
+	border-right: solid;
+    text-align: center;
+    font-weight: bold;
+}
+th {
+	font-weight: bolder;
+	border-top: solid;
+}
+tr:hover {background-color: lavender;}
