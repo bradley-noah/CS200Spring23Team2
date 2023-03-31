@@ -1,0 +1,124 @@
+html{
+    cursor: url('pointer_UA.png'), auto;
+    overflow-x: hidden; 
+}
+
+body{
+    margin: 0;
+    color: rgb(130, 138, 143);   
+}
+
+div[role="banner"]{
+    display: flex;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    background: rgb(158, 27, 50);
+}
+
+h1{
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+}
+
+nav{
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a.nav{
+    padding: 0;
+    color: rgb(158, 27, 50);
+    text-decoration: none;
+    background-color: transparent;
+    padding: 5px;
+}
+
+.content{
+    padding-right: 10px;
+    padding-left: 13vw;
+}
+
+.heading{
+    color: black;
+}
+
+.cases{
+    font-weight: bolder;
+}
+
+.item{
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(95,106,114,50%);
+}
+
+.drop-content{ 
+    color: hsl(240, 6%, 50%);
+    padding-bottom: 0;
+    margin: 0;
+}
+
+.ucd{
+    width: 87vw;
+    max-width: 500px;
+}
+
+p.ext{
+    padding: 0;
+    margin: 0;
+    padding-left: 25px;
+    line-height : 20px;
+}
+ul.ext{
+    margin: 0;
+}
+ul.ext > p{
+    margin: 0;
+}
+
+table{
+    font-weight: 100;
+    border: 1px solid;
+    width: 100%;
+}
+
+table > tbody > tr:nth-of-type(1) {
+    background: rgb(95,106,114);
+    color: white;
+}
+
+.last{
+    border: 0;
+}
+
+.sticky-top{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.dennyChimes{
+    width:11vw;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    margin-top: -50vw;
+}
+
+.bucket{
+    width: 85vw;
+}
+
+div[role="footer"]{
+    display: flex;
+    justify-content: center;    
+    width: 100vw;
+    padding: 3px 0px;    
+    background:rgb(158, 27, 50);
+    color: rgb(255, 255, 255);
+}
