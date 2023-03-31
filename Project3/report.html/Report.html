@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: darkred;
+	color: white;
+	text-align: center;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+hr.solid{
+	border-top: 3px solid #bbb
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+
+<h1 style="color:darkred;"><center>Chocoholics Anonymous System Analysis</center></h1>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Header Table')">Header Table</button>
+  <button class="tablinks" onclick="openTab(event, 'Task Distribution Table')">Task Distribution Table</button>
+  <button class="tablinks" onclick="openTab(event, 'Design Paragraph')">Design Paragraph</button>
+  <button class="tablinks" onclick="openTab(event, 'Class Class Diagram')">Class Diagram</button>
+  <button class="tablinks" onclick="openTab(event, 'Sequence Diagram')">Sequence Diagrams</button>
+  <button class="tablinks" onclick="openTab(event, 'Bitbucket Statistics')">Bitbucket Statistics</button>
+  
+</div>
+
+<div id="Header Table" class="tabcontent">
+<h3 style="color:darkred;"><center>Header Table</center></h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>CWID</th>
+    <th>Crimson Email</th>
+    <th>Hours Contributed</th>
+  </tr>
+  <tr>
+    <td>Noah Bradley</td>
+    <td>12291227</td>
+    <td>nobradley@crimson.ua.edu</td>
+    <td>7 hours</td>
+  </tr>
+  <tr>
+    <td>Andrew Carter</td>
+    <td>12050108</td>
+    <td>atcarter4@crimson.ua.edu</td>
+    <td>7 hours</td>
+  </tr>
+  <tr>
+    <td>Gwynevere Deterding</td>
+    <td>12144266</td>
+    <td>gadeterding@crimson.ua.edu</td>
+    <td>7 hours</td>
+  </tr>
+  <tr>
+    <td>Jahanvi Kathiriya</td>
+    <td>12085085</td>
+    <td>jckathiriya@crimson.ua.edu</td>
+    <td>7 hours </td>
+  <tr>
+    <td>Brandon Nguyen (Submitter)</td>
+    <td>12160687</td>
+    <td>bhnguyen2@crimson.ua.edu</td>
+    <td>7 hours</td>
+  </tr>
+  <tr>
+    <td>Zach Simpson</td>
+    <td>12143002</td>
+    <td>zasimpson@crimson.ua.edu</td>
+    <td>7 hours</td>
+  </tr>
+  <tr>
+  	<td>Bill Amer</td>
+    <td>12143115</td>
+    <td>bamer@crimson.ua.edu</td>
+    <td>7 hours</td>
+  </tr>
+</table>
+</div>
+
+<div id="Task Distribution Table" class="tabcontent">
+  <h3 style="color:darkred;"><center>Task Distribution Table</center></h3>
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Task</th>
+    <th>Total Contribution Percent</th>
+  </tr>
+  <tr>
+    <td>Noah Bradley</td>
+    <td>Class Diagram, Sequence Diagrams, Updated Activity Descriptions</td>
+    <td>14.3%</td>
+  </tr>
+  <tr>
+    <td>Andrew Carter</td>
+    <td>Class Diagram, Sequence Diagrams, Updated Activity Descriptions</td>
+    <td>14.3%</td>
+  </tr>
+  <tr>
+    <td>Gwynevere Deterding</td>
+    <td>Class Diagram, Sequence Diagrams, Updated Activity Descriptions, Updated Use Case Descriptions</td>
+    <td>14.3%</td>
+  </tr>
+  <tr>
+    <td>Jahanvi Kathiriya</td>
+    <td>Class Diagram, Sequence Diagrams, Updated Activity Descriptions, Paragraph</td>
+    <td>14.3%</td>
+  </tr>
+  <tr>
+    <td>Brandon Nguyen (submitter)</td>
+    <td>Class Diagram, Sequence Diagrams, Updated Activity Descriptions</td>
+    <td>14.3%</td>
+  </tr>
+  <tr>
+    <td>Zach Simpson</td>
+    <td>Class Diagram, Sequence Diagrams, Updated Activity Descriptions</td>
+    <td>14.3%</td>
+  </tr>
+  <tr>
+  	<td>Billal Amer</td>
+    <td>Class Diagram, Sequence Diagrams</td>
+    <td>14.3%</td>
+  </tr>
+</table>
+   
+</div>
+
+<div id="Design Paragraph" class="tabcontent">
+  <h3 style="color:darkred;"><center>Chocoholics Anonymous System Design</center></h3>
+  <p>High cohesion and low coupling are both included in our design, making it very efficient. It makes use of sequential and verbal coherence. The three different menus (for each user: provider, manager, and operator) that follow the main menu exhibit sequential cohesion. In addition, our design also incorporates temporal cohesion because we have the timer functions as an actor in this system. Since every use case has its own classes and functions, our design as a whole also features a high level of functional cohesion. Though undesirable, some coupling is included in our design. We have external coupling, which was unavoidable since all functions must be used in the same terminal. Also, it uses some stamp and data coupling when accessing records and printing reports; these are the loosest types of coupling and will increase productivity. Overall, the design is solid and effective.</p>
+</div>
+
+<div id="Class Diagram" class="tabcontent">
+  <h3 style="color:darkred;"><center>Class Diagram</center></h3>
+  <p><center><img src = "Project3Class.png" Width = "800" Height = "800"></center></p>
+</div>
+
+<div id="Sequence Diagram" class="tabcontent">
+  <h3 style="color:darkred;"><center>Request a Report</center></h3>
+  <p><center><img src = "RequestaReport.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Manage Member</center></h3>
+  <p><center><img src = "ManageMember.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Manage Provider</center></h3>
+  <p><center><img src = "ManageProvider.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Run Main Accounting Procedure</center></h3>
+  <p><center><img src = "RunMainAccountingProcedure.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Verify Operator</center></h3>
+  <p><center><img src = "VerifyOperator.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Verify Manager</center></h3>
+  <p><center><img src = "VerifyManager.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Verify Provider</center></h3>
+  <p><center><img src = "VerifyProvider.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Verify Member</center></h3>
+  <p><center><img src = "VerifyMember.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Bill ChocAn</center></h3>
+  <p><center><img src = "BillChocAn.png" Width = "1000" Height = "800"></center></p>
+  <h3 style="color:darkred;"><center>Request Provider Directory</center></h3>
+  <p><center><img src = "RequestProviderDirectory.png" Width = "1000" Height = "800"></center></p>
+</div>
+
+<div id="Bitbucket Statistics" class="tabcontent">
+  <h3 style="color:darkred;"><center>Bitbucket Statistics</center></h3>
+  <p><center><img src = "BitBucket.png" Width = "900" Height = "500"</center></p>
+</div>
+
+<div class="footer">
+	<p>Team 2 Project 3 CS 200</p>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html> 
