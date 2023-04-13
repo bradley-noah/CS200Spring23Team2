@@ -2,6 +2,7 @@ package spring23team2;
 
 import java.util.Scanner;
 
+
 public class MainMenu {
 	
 	public static void main(String[] args) {
@@ -10,7 +11,7 @@ public class MainMenu {
 	
 	public void startup() {
 		System.out.println("Welcome to Chocoholics Anonymous!");
-		System.out.println("Enter a l to login, or q to quit.");
+		System.out.println("Enter a l to login or q to quit.");
 		
 		@SuppressWarnings("resource")
 		
