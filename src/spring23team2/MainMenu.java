@@ -5,15 +5,23 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Brandon Nguyen
+ * @version 1.0
+ *
+ * Main Menu Class to verify and direct the user to the desired menu.
+ */
 
 public class MainMenu {
 	
-	boolean authenticated = true;
+	boolean authenticated;
 	
 	public static void main(String[] args) {
 		new MainMenu().startup();
 	}
 	
+	//Basic welcome prompt
 	public void startup() {
 		System.out.println("-----------------------------------");
 		System.out.println("|Welcome to Chocoholics Anonymous!|");
@@ -22,6 +30,7 @@ public class MainMenu {
 		this.prompt();
 	}
 	
+	//prompt to login
 	public void prompt() {
 		System.out.println("Login Menu");
 		System.out.println("Please enter a number to select an option from the menu: ");
@@ -42,35 +51,16 @@ public class MainMenu {
 				System.out.println("Enter your User Number: ");
 				int userNum = scanner.nextInt();
 				
-				ArrayList<Integer> providerNums = new ArrayList<Integer>();
-				try {
-				      File myFile = new File("Providers.txt");
-				      Scanner myReader = new Scanner(myFile);
-				      while (myReader.hasNextInt()) {
-				    	  providerNums.add(myReader.nextInt()); 
-				    }
-				      myReader.close();
-				    } 
-				catch (FileNotFoundException e) {
-				      System.out.println("An error occurred.");
-				      e.printStackTrace();
-				    }
+				new UserAuthenticator().main(userNum); //Verify member
 				
-				authenticated = false;
-				
-				for(int i = 0; i < providerNums.size(); i++) {
-					if(providerNums.get(i) == userNum) {
-						authenticated = true;
-					}
-				}
-					
 				if(authenticated) {
 					System.out.println("User Verified");
 					System.out.println();
-					menues();
+					menus();
 				} else {
 					System.out.println("User Not Verified");					
 				}
+				
 				break;
 				
 			default:
@@ -79,7 +69,8 @@ public class MainMenu {
 		}
 	}
 	
-	public void menues() {
+	//prompt to select which menu to access
+	public void menus() {
 		System.out.println("Menu Selection");
 		System.out.println("Please enter a number to select an option from the menu: ");
 		System.out.println("1. Manager Menu");
@@ -94,22 +85,22 @@ public class MainMenu {
 		switch (option) {
 			case 1:
 				System.out.println();
-				new ManagerMenu().main(null);
+				new ManagerMenu().main(null); //start Manager Menu
 				break;
 				
 			case 2:
 				System.out.println();
-				//start Provider Menu
+				new ProviderMenu().main(null); //start Provider Menu
 				break;
 				
 			case 3:
 				System.out.println();
-				//start Operator Menu
+				new OpMenu().mainMenu(); //start Operator Menu
 				break;
 				
 			default:
 				System.out.println("Invalid Option");
-				this.menues();
+				this.menus(); //re-prompt menus options
 		}
 	}
 }
