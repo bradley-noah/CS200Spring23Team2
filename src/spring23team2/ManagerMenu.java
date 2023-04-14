@@ -1,17 +1,18 @@
-/*
-Author: Gwynevere Deterding
-
-This is the user interface for the ChocAn Manager. The ChocAn Manager can request
-a provider report, member report, summary report, or EFT data report to be run.
-
-*/
-
 package spring23team2;
 
 import java.io.File;  
 import java.io.FileNotFoundException; 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+/**
+* @author Gwynevere Deterding
+* @version 1.0
+*
+* This is the user interface for the ChocAn Manager. The ChocAn Manager can request
+* a provider report, member report, summary report, or EFT data report to be run.
+*
+*/
 
 public class ManagerMenu {
 	
