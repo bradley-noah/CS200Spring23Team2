@@ -1,6 +1,9 @@
 package spring23team2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;  
+import java.io.FileNotFoundException; 
 
 public class ManagerMenu {
 	
@@ -13,21 +16,69 @@ public class ManagerMenu {
 		System.out.println("3. Request Summary Report");
 		System.out.println("4. Request EFT Data Report");
 		
-
 		int menuOption = myObj.nextInt();  // Read user input
-		System.out.println("You entered: " + menuOption);  // Output user input
 		
 		switch (menuOption) {
 		case 1:
+			ArrayList<Integer> providerNums = new ArrayList<Integer>();
+			try {
+			      File myFile = new File("Providers.txt");
+			      Scanner myReader = new Scanner(myFile);
+			      while (myReader.hasNextInt()) {
+			    	  providerNums.add(myReader.nextInt()); 
+			    }
+			      myReader.close();
+			    } 
+			catch (FileNotFoundException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
 			System.out.println("Please enter the provider number for the report you would like to request.");
 			int provNum = myObj.nextInt();
-			System.out.println("You entered: " + provNum);  // Output user input
+			boolean isValidProvNum = false;
+			for(int i = 0; i < providerNums.size(); i++) {
+				if(providerNums.get(i) == provNum) {
+					isValidProvNum = true;
+				}
+			}
+			if(isValidProvNum) {
+				System.out.print("Generating Provider Report for Provider #" + provNum);
+				System.out.println("...");
+			}
+			else {
+				System.out.println("Invalid Provider Number.");
+			}
 			break;
 		
 		case 2:
+			ArrayList<Integer> memberNums = new ArrayList<Integer>();
+			try {
+			      File myFile = new File("Members.txt");
+			      Scanner myReader = new Scanner(myFile);
+			      while (myReader.hasNextInt()) {
+			    	  memberNums.add(myReader.nextInt()); 
+			    }
+			      myReader.close();
+			    } 
+			catch (FileNotFoundException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
 			System.out.println("Please enter the member number for the report you would like to request.");
-			int memberNum = myObj.nextInt();
-			System.out.println("You entered: " + memberNum);  // Output user input
+			int memberID = myObj.nextInt();
+			boolean isValidMemID = false;
+			for(int i = 0; i < memberNums.size(); i++) {
+				if(memberNums.get(i) == memberID) {
+					isValidMemID = true;
+				}
+			}
+			if(isValidMemID) {
+				System.out.print("Generating Member Report for Member #" + memberID);
+				System.out.println("...");
+			}
+			else {
+				System.out.println("Invalid Member Number.");
+			}
 			break;
 			
 		case 3:
@@ -41,6 +92,8 @@ public class ManagerMenu {
 		default:
 			System.out.println("Invalid Option");
 	    }
+		
+		System.out.println("Exiting System.");
     }
 		
 }
