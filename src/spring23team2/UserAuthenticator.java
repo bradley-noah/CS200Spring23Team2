@@ -12,6 +12,7 @@ import java.util.Scanner;
 *
 * This is a function that checks the input of the user for verification purposes when attempting to log in.
 *
+*
 */
 
 public class UserAuthenticator{
