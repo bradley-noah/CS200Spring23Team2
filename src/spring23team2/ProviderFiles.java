@@ -13,7 +13,7 @@ import java.util.Properties;
  * @author Jahanvi Kathiriya
  * @version 2.0       fixed save function and added load function
  */
-public class ProviderDirectory {
+public class ProviderFiles {
     public static HashMap<Integer, Provider> providerMap = new HashMap<> ();
 
     /**
