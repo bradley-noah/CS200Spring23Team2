@@ -1,22 +1,22 @@
 package spring23team2;
 
 /**
- * The Manager class ...
+ * The Member class ...
  * 
  * @author Jahanvi Kathiriya
  * @version 1.0
  */
-public class Manager{
+public class Member{
     String name;
-    int ManagerNumber;
+    int memberNumber;
     String address;
     String city;
     String state;
     int zip;
 
-    public Manager(String name,int ManagerNumber,String address,String city,String state,int zip){
+    public Member(String name,int memberNumber,String address,String city,String state,int zip){
         this.name = name;
-        this.ManagerNumber = ManagerNumber;
+        this.memberNumber = memberNumber;
         this.address = address;
         this.city = city;
         this.state = state;
@@ -34,8 +34,8 @@ public class Manager{
      * The getAccountNumber function gets the account number of the provider
      * @return account number of provider
      */
-    public int getManagerNumber(){
-        return ManagerNumber;
+    public int getMemberNumber(){
+        return memberNumber;
     }
     /**
      * The getAddress function gets the name of the provider

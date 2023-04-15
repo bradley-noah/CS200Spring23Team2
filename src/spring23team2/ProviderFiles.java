@@ -69,7 +69,8 @@ public class ProviderFiles {
 
     /**
      * Writes all data from file to Map
-     * 
+     * @throws IOException
+     * @throws FileNotFoundException
      */
     public static void loadProviderMap() {
         Properties prop = new Properties();

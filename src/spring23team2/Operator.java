@@ -1,22 +1,22 @@
 package spring23team2;
 
 /**
- * The Manager class ...
+ * The Operator class ...
  * 
  * @author Jahanvi Kathiriya
  * @version 1.0
  */
-public class Manager{
+public class Operator{
     String name;
-    int ManagerNumber;
+    int OperatorNumber;
     String address;
     String city;
     String state;
     int zip;
 
-    public Manager(String name,int ManagerNumber,String address,String city,String state,int zip){
+    public Operator(String name,int OperatorNumber,String address,String city,String state,int zip){
         this.name = name;
-        this.ManagerNumber = ManagerNumber;
+        this.OperatorNumber = OperatorNumber;
         this.address = address;
         this.city = city;
         this.state = state;
@@ -34,8 +34,8 @@ public class Manager{
      * The getAccountNumber function gets the account number of the provider
      * @return account number of provider
      */
-    public int getManagerNumber(){
-        return ManagerNumber;
+    public int getOperatorNumber(){
+        return OperatorNumber;
     }
     /**
      * The getAddress function gets the name of the provider
