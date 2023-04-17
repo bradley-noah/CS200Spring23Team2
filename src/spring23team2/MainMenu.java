@@ -70,14 +70,22 @@ public class MainMenu extends JFrame{
     	ManagerFiles.loadManagerMap();
     	MemberFiles.loadMemberMap();
     	OperatorFiles.loadOperatorMap();
+<<<<<<< HEAD
     	ProviderFiles.loadProviderMap();
     	addProviderTransaction.loadProviderTransactionMap();
+=======
+    	//addProviderTransaction.loadProviderTransactionMap();
+>>>>>>> refs/remotes/origin/master
         new MainMenu();
         ManagerFiles.save();
         MemberFiles.save();
         OperatorFiles.save();
+<<<<<<< HEAD
         ProviderFiles.save();
         addProviderTransaction.save();
+=======
+        //addProviderTransaction.save();
+>>>>>>> refs/remotes/origin/master
     }
 }
 
@@ -96,7 +104,11 @@ class ProviderLoginScreen extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Get the value of the text field and display it
+<<<<<<< HEAD
             	String inputValue = textField.getText();
+=======
+                String inputValue = textField.getText();
+>>>>>>> refs/remotes/origin/master
                 int number = Integer.parseInt(inputValue);
                 if (ProviderFiles.searchProvider(number) == null) {
                 	JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You have entered an invalid number");
