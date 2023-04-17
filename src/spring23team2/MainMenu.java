@@ -70,11 +70,13 @@ public class MainMenu extends JFrame{
     	ManagerFiles.loadManagerMap();
     	MemberFiles.loadMemberMap();
     	OperatorFiles.loadOperatorMap();
+    	ProviderFiles.loadProviderMap();
     	addProviderTransaction.loadProviderTransactionMap();
         new MainMenu();
         ManagerFiles.save();
         MemberFiles.save();
         OperatorFiles.save();
+        ProviderFiles.save();
         addProviderTransaction.save();
     }
 }
@@ -94,8 +96,13 @@ class ProviderLoginScreen extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Get the value of the text field and display it
-                String inputValue = textField.getText();
-                JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You entered: " + inputValue);
+            	String inputValue = textField.getText();
+                int number = Integer.parseInt(inputValue);
+                if (ProviderFiles.searchProvider(number) == null) {
+                	JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You have entered an invalid number");
+                } else {
+                	JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You have entered a correct number");
+                }
             }
         });
         
@@ -131,7 +138,12 @@ class ManagerLoginScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Get the value of the text field and display it
                 String inputValue = textField.getText();
-                JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You entered: " + inputValue);
+                int number = Integer.parseInt(inputValue);
+                if (ManagerFiles.searchManager(number) == null) {
+                	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered an invalid number");
+                } else {
+                	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered a correct number");
+                }
             }
         });
         
@@ -160,7 +172,7 @@ class OperatorLoginScreen extends JFrame {
 		super("Operator Login");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-​
+
     	textField = new JTextField(20);
     	JButton submitButton = new JButton("Submit");
 
@@ -168,7 +180,12 @@ class OperatorLoginScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                     // Get the value of the text field and display it
                 String inputValue = textField.getText();
-                JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You entered: " + inputValue);
+                int number = Integer.parseInt(inputValue);
+                if (OperatorFiles.searchOperator(number) == null) {
+                	JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You have entered an invalid number");
+                } else {
+                	JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You have entered a correct number");
+                }
             }
        });
             
