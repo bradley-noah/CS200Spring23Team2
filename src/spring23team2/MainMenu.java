@@ -20,7 +20,7 @@ public class MainMenu extends JFrame{
 	private JButton button2;
 	
     public MainMenu() {
-        super("Main Screen");
+        super("ChocAn Main Screen");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -160,7 +160,7 @@ class OperatorLoginScreen extends JFrame {
 		super("Operator Login");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ​
+​
     	textField = new JTextField(20);
     	JButton submitButton = new JButton("Submit");
 
