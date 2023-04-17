@@ -32,7 +32,7 @@ public class UserAuthenticator{
 					      System.out.println("An error occurred.");
 					      e.printStackTrace();
 					    }
-					authenicated = false;
+					boolean authenicated = false;
 					
 					for(int i = 0; i < providerNums.size(); i++) {
 						if(providerNums.get(i) == userNum) {
