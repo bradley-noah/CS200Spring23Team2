@@ -1,106 +1,189 @@
 package spring23team2;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.FlowLayout;
+import java.awt.event.*;
 
 /**
  * 
  * @author Brandon Nguyen
- * @version 1.0
+ * @version 2.0
  *
  * Main Menu Class to verify and direct the user to the desired menu.
+ * Update: added GUI
  */
 
-public class MainMenu {
+public class MainMenu extends JFrame{
 	
-	boolean authenticated;
+	private JButton button;
+	private JButton button1;
+	private JButton button2;
 	
-	public static void main(String[] args) {
-		new MainMenu().startup();
-	}
-	
-	//Basic welcome prompt
-	public void startup() {
-		System.out.println("-----------------------------------");
-		System.out.println("|Welcome to Chocoholics Anonymous!|");
-		System.out.println("-----------------------------------");
-		System.out.println();
-		this.prompt();
-	}
-	
-	//prompt to login
-	public void prompt() {
-		System.out.println("Login Menu");
-		System.out.println("Please enter a number to select an option from the menu: ");
-		System.out.println("1. Login");
-		System.out.println("2. Quit");
-		
-		@SuppressWarnings("resource")
-		
-		Scanner scanner = new Scanner(System.in);
-		int option = scanner.nextInt();
-
-		switch (option) {
-			case 2:
-				System.out.println("The system is shutting down.");
-				System.exit(0);
-			
-			case 1:
-				System.out.println("Enter your User Number: ");
-				int userNum = scanner.nextInt();
-				
-				new UserAuthenticator().main(userNum); //Verify member
-				
-				if(authenticated) {
-					System.out.println("User Verified");
-					System.out.println();
-					menus();
-				} else {
-					System.out.println("User Not Verified");					
+    public MainMenu() {
+        super("Main Screen");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        //add more buttons
+        button = new JButton("Provider Menu");
+        button.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == button) {
+                    dispose(); // close current screen
+                    new ProviderLoginScreen(); // open validation screen
+                }
+            }
+        });
+        
+        button1 = new JButton("Manager Menu");
+        button1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == button1) {
+                    dispose(); // close current screen
+                    new ManagerLoginScreen(); // open something else screen
+                }
+            }
+        });
+        
+        button2 = new JButton("Operator Menu");
+		button2.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == button2) {
+					dispose(); // close current screen
+					new OperatorLoginScreen(); // open validation screen
 				}
-				
-				break;
-				
-			default:
-				System.out.println("Invalid Option");
-				this.prompt();
-		}
-	}
+			}
+		});
+		
+        JPanel panel = new JPanel(new FlowLayout());
+        
+        //add button
+        panel.add(button);
+        panel.add(button1);
+        panel.add(button2);
+        
+        add(panel);
+        setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+    	ManagerFiles.loadManagerMap();
+    	MemberFiles.loadMemberMap();
+    	OperatorFiles.loadOperatorMap();
+    	addProviderTransaction.loadProviderTransactionMap();
+        new MainMenu();
+        ManagerFiles.save();
+        MemberFiles.save();
+        OperatorFiles.save();
+        addProviderTransaction.save();
+    }
+}
+
+class ProviderLoginScreen extends JFrame {
 	
-	//prompt to select which menu to access
-	public void menus() {
-		System.out.println("Menu Selection");
-		System.out.println("Please enter a number to select an option from the menu: ");
-		System.out.println("1. Manager Menu");
-		System.out.println("2. Provider Menu");
-		System.out.println("3. Operator Menu");
-		
-		@SuppressWarnings("resource")
-		
-		Scanner scanner = new Scanner(System.in);
-		int option = scanner.nextInt();
-		
-		switch (option) {
-			case 1:
-				System.out.println();
-				new ManagerMenu().main(null); //start Manager Menu
-				break;
-				
-			case 2:
-				System.out.println();
-				new ProviderMenu().main(null); //start Provider Menu
-				break;
-				
-			case 3:
-				System.out.println();
-				new OpMenu().mainMenu(); //start Operator Menu
-				break;
-				
-			default:
-				System.out.println("Invalid Option");
-				this.menus(); //re-prompt menus options
-		}
-	}
+	private JTextField textField;
+	
+    public ProviderLoginScreen() {
+        super("Provider Login");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+		textField = new JTextField(20);
+		JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Get the value of the text field and display it
+                String inputValue = textField.getText();
+                JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You entered: " + inputValue);
+            }
+        });
+        
+        // Create a new panel to hold the input components
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new FlowLayout());
+        inputPanel.add(new JLabel("Enter your Provider Code: "));
+        inputPanel.add(textField);
+        inputPanel.add(submitButton);
+
+        // Add the panel to the frame's content pane
+        getContentPane().add(inputPanel);
+
+        // Set the frame size and make it visible
+        setSize(400, 400);
+        setVisible(true);        
+    }
+}
+
+class ManagerLoginScreen extends JFrame {
+	
+	private JTextField textField;
+	
+    public ManagerLoginScreen() {
+        super("Manager Login");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+		textField = new JTextField(20);
+		JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Get the value of the text field and display it
+                String inputValue = textField.getText();
+                JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You entered: " + inputValue);
+            }
+        });
+        
+        // Create a new panel to hold the input components
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new FlowLayout());
+        inputPanel.add(new JLabel("Enter your Provider Code: "));
+        inputPanel.add(textField);
+        inputPanel.add(submitButton);
+
+        // Add the panel to the frame's content pane
+        getContentPane().add(inputPanel);
+
+        // Set the frame size and make it visible
+        setSize(400, 400);
+        setVisible(true);        
+    }
+}
+
+
+class OperatorLoginScreen extends JFrame {
+	
+	private JTextField textField;
+	
+	public OperatorLoginScreen() {
+		super("Operator Login");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ​
+    	textField = new JTextField(20);
+    	JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                    // Get the value of the text field and display it
+                String inputValue = textField.getText();
+                JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You entered: " + inputValue);
+            }
+       });
+            
+            // Create a new panel to hold the input components
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new FlowLayout());
+        inputPanel.add(new JLabel("Enter your Provider Code: "));
+        inputPanel.add(textField);
+        inputPanel.add(submitButton);
+
+        // Add the panel to the frame's content pane
+        getContentPane().add(inputPanel);
+
+        // Set the frame size and make it visible
+        setSize(400, 400);
+        setVisible(true);        
+    }
 }
