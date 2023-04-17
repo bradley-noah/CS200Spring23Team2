@@ -5,9 +5,16 @@ package spring23team2;
 */
 public class FakeMain {
 	public static void main(String[] args){
-        MemberFiles.loadMemberMap();
-        MemberFiles.insertMember("j", 1002, "1345 10th Ave 1", "Tuscaloosa", "Alabama", 35404);
-        System.out.println(MemberFiles.searchMember(1001).getName());
-        MemberFiles.save();
+        OperatorFiles.loadOperatorMap();
+        OperatorFiles.insertOperator("j", 1002, "1345 10th Ave 1", "Tuscaloosa", "Alabama", 35404);
+        OperatorFiles.save();
+        
+        ManagerFiles.loadManagerMap();
+        ManagerFiles.insertManager("j", 1002, "1345 10th Ave 1", "Tuscaloosa", "Alabama", 35404);
+        ManagerFiles.save();
+        
+        ProviderFiles.loadProviderMap();
+        ProviderFiles.insertProvider("j", 1002, "1345 10th Ave 1", "Tuscaloosa", "Alabama", 35404);
+        ProviderFiles.save();
     }
 }
