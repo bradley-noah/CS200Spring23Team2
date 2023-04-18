@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.*;
 /**
- * This is a hash map that store Provider Transactions
+ * This is a hash map that store Member Transactions
  * 
  * @author Brandon Nguyen
  * @version 1.0       
