@@ -8,7 +8,7 @@ import java.awt.event.*;
  * @author Billal Amer
  * @version 1.0
  * Operator Menu GUI for adding, deleting, and updating providers and members
- * in the ChocAn system
+ * in the ChocAn system.
  * 
  */
 
