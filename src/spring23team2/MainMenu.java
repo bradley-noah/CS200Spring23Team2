@@ -204,3 +204,4 @@ class OperatorLoginScreen extends JFrame {
         setVisible(true);        
     }
 }
+

@@ -1,9 +1,5 @@
 package spring23team2;
 
-//			                                                                                   Operator Menu class written by Billal Amer
-//                                                         									   ------------------------------------------
-
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
