@@ -71,13 +71,13 @@ public class MainMenu extends JFrame{
     	MemberFiles.loadMemberMap();
     	OperatorFiles.loadOperatorMap();
     	ProviderFiles.loadProviderMap();
-    	addProviderTransaction.loadProviderTransactionMap();
+    	ProviderTransactionFiles.loadProviderTransactionMap();
         new MainMenu();
         ManagerFiles.save();
         MemberFiles.save();
         OperatorFiles.save();
         ProviderFiles.save();
-        addProviderTransaction.save();
+        ProviderTransactionFiles.save();
     }
 }
 
