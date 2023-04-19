@@ -71,13 +71,13 @@ public class MainMenu extends JFrame{
     	MemberFiles.loadMemberMap();
     	OperatorFiles.loadOperatorMap();
     	ProviderFiles.loadProviderMap();
-    	addProviderTransaction.loadProviderTransactionMap();
+    	//addProviderTransaction.loadProviderTransactionMap();
         new MainMenu();
         ManagerFiles.save();
         MemberFiles.save();
         OperatorFiles.save();
         ProviderFiles.save();
-        addProviderTransaction.save();
+        //addProviderTransaction.save();
     }
 }
 
@@ -142,7 +142,7 @@ class ManagerLoginScreen extends JFrame {
                 if (ManagerFiles.searchManager(number) == null) {
                 	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered a correct number");
+                	ManagerMenu.main(null);
                 }
             }
         });
