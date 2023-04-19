@@ -142,7 +142,7 @@ class ManagerLoginScreen extends JFrame {
                 if (ManagerFiles.searchManager(number) == null) {
                 	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered a correct number");
+                	ManagerMenu.main(null);
                 }
             }
         });
@@ -204,3 +204,4 @@ class OperatorLoginScreen extends JFrame {
         setVisible(true);        
     }
 }
+
