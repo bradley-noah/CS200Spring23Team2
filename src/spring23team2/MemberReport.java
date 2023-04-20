@@ -1,11 +1,10 @@
 package spring23team2;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * This is a hash map that creates all member Records when accounting procedure is ran.
@@ -21,32 +20,30 @@ public class MemberReport {
         if (!directory.exists()){
             directory.mkdir();
         }
-        System.out.println("Directory.");
+        
         for (Map.Entry<Integer, List<MemberTransaction>> entry : MemberTransactionFiles.MemberTransactionMap.entrySet()) {
             Integer memberNumber = entry.getKey();
             List<MemberTransaction> transactions = entry.getValue();
-            Properties prop = new Properties();
-            String fileName = String.valueOf(memberNumber) + ".xml"; 
+            
+            String fileName = String.valueOf(memberNumber) + ".txt"; 
             File file = new File(directory, fileName);
         
-            prop.setProperty("MemberNumber", String.valueOf(memberNumber));
-            prop.setProperty("MemberName", MemberFiles.searchMember(memberNumber).getName());
-            prop.setProperty("MemberAddress", MemberFiles.searchMember(memberNumber).getAddress());
-            prop.setProperty("MemberCity", MemberFiles.searchMember(memberNumber).getCity());
-            prop.setProperty("MemberState", MemberFiles.searchMember(memberNumber).getState());
-            prop.setProperty("MemberZipCode", String.valueOf(MemberFiles.searchMember(memberNumber).getZip()));
-            prop.setProperty("MemberZipCode", String.valueOf(MemberFiles.searchMember(memberNumber).getZip()));
-            
-            for (MemberTransaction transaction : transactions) {
-                prop.setProperty("ServiceDate", transaction.getServiceDate());
-                prop.setProperty("ProviderName", transaction.getProviderName());
-                prop.setProperty("ServiceName", transaction.getServiceName());
-            }
-            System.out.println("hi   ");
             try {
-                FileOutputStream fileOut = new FileOutputStream(file);
-                prop.storeToXML(fileOut, "Member Report");
-                fileOut.close();
+                FileWriter writer = new FileWriter(file);
+                writer.write("MemberNumber:  " + String.valueOf(memberNumber) + "\n");
+                writer.write("MemberName:  " + MemberFiles.searchMember(memberNumber).getName() + "\n");
+                writer.write("MemberAddress:  " + MemberFiles.searchMember(memberNumber).getAddress() + "\n");
+                writer.write("MemberCity:  " + MemberFiles.searchMember(memberNumber).getCity() + "\n");
+                writer.write("MemberState:  " + MemberFiles.searchMember(memberNumber).getState() + "\n");
+                writer.write("MemberZipCode:  " + String.valueOf(MemberFiles.searchMember(memberNumber).getZip()) + "\n");
+                writer.write("----------------------------------------\n");
+                for (MemberTransaction transaction : transactions) {
+                    writer.write("ServiceDate:  " + transaction.getServiceDate() + "\n");
+                    writer.write("ProviderName:  " + transaction.getProviderName() + "\n");
+                    writer.write("ServiceName:  " + transaction.getServiceName() + "\n");
+                    writer.write("----------------------------------------\n");
+                }
+                writer.close();
                 System.out.println("Saved successfully.");
             } catch (IOException e) {
                 e.printStackTrace();
