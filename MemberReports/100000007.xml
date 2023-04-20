@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Member Report</comment>
+<entry key="MemberNumber">100000007</entry>
+<entry key="MemberZipCode">43035</entry>
+<entry key="ProviderName">Irving Fletcher</entry>
+<entry key="MemberName">Kiana English</entry>
+<entry key="MemberState">Ohio</entry>
+<entry key="ServiceName">Chocolate Mind Expansion</entry>
+<entry key="MemberCity">Lewis Center</entry>
+<entry key="ServiceDate">April 21</entry>
+<entry key="MemberAddress">7084 Grand Dr.</entry>
+</properties>
