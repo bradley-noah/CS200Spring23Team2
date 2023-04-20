@@ -1,0 +1,15 @@
+ProviderNumber:  100000002
+ProviderName:  Irving Fletcher
+ProviderAddress:  7889 Courtland Street
+ProviderCity:  Stevens Point
+ProviderState:  Wisconsin
+ProviderZipCode:  54481
+----------------------------------------
+ServiceDate:  April 20
+RecievedOnDate:  April 20
+RecievedOnTime:  5:00
+MemberName:  Damaris Acevedo
+MemberNumber:  100000008
+ServiceCode:  1001
+FeesToBePaid:  50
+----------------------------------------
