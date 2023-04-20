@@ -184,7 +184,7 @@ class OperatorLoginScreen extends JFrame {
                 if (OperatorFiles.searchOperator(number) == null) {
                 	JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You have entered a correct number");
+                	OperatorMenu.main(null);;
                 }
             }
        });
