@@ -2,11 +2,17 @@ package spring23team2;
 
 public class FakeMain {
 		public static void main(String[] args) {
-			ProviderTransactionFiles.loadProviderTransactionMap();
+			//ProviderTransactionFiles.loadProviderTransactionMap();
 			MemberTransactionFiles.loadMemberTransactionMap();
-			ProviderTransactionFiles.insertProviderTransaction(100000002, "April 20", "April 20", "3:00 P.M.", 100000007, "Kiana English", 4012, 50);
+			MemberFiles.loadMemberMap();
+			
 			MemberTransactionFiles.insertMemberTransaction(100000007, "April 20", "Irving Fletcher", "Chocolate Mind Expansion");
-			ProviderTransactionFiles.save();
+			MemberTransactionFiles.insertMemberTransaction(100000007, "April 21", "Irving Fletcher", "Chocolate Mind Expansion");
+			MemberTransactionFiles.insertMemberTransaction(100000008, "April 21", "Irving Fletcher", "Chocolate Mind Expansion");
+			MemberReport.createMemberReports();
+			
+			//ProviderTransactionFiles.save();
+			MemberFiles.save();
 			MemberTransactionFiles.save();
 		}
 }
