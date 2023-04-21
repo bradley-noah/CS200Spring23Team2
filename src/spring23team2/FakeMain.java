@@ -7,7 +7,7 @@ public class FakeMain {
 			MemberFiles.loadMemberMap();
 			ProviderFiles.loadProviderMap();
 			
-			ProviderReport.createProviderReports();
+			SummaryReport.createSummaryReports();
 			
 			ProviderFiles.save();
 			ProviderTransactionFiles.save();
