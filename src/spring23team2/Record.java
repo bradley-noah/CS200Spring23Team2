@@ -19,6 +19,15 @@ public class Record {
 	String state;
 	int zip;
 	
+	
+	public Record(String name, int number, String address, String city, String state, int zip) {
+		this.name = name;
+		this.number = number;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+	}
 	/**
 	 * Persistently stores the data of the Record in a text file
 	 * Needs tweaking
