@@ -1,0 +1,11 @@
+MemberNumber:  100000008
+MemberName:  Damaris Acevedo
+MemberAddress:  579 N. Tower St.
+MemberCity:  Clayton
+MemberState:  NC
+MemberZipCode:  27520
+----------------------------------------
+ServiceDate:  April 21
+ProviderName:  Irving Fletcher
+ServiceName:  Chocolate Mind Expansion
+----------------------------------------
