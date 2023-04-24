@@ -21,7 +21,7 @@ public class OpMenuTEST extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == amb) {
 					dispose();
-					new AddMemberScreen1();
+					new AddMemberScreen();
 					
 				}
 			}
@@ -55,7 +55,7 @@ public class OpMenuTEST extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == apb) {
 					dispose();
-					
+					new AddProviderScreen();
 				}
 			}
 		
@@ -66,7 +66,7 @@ public class OpMenuTEST extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == dpb) {
 					dispose();
-					
+					new DeleteProviderScreen();
 				}
 			}
 		
@@ -107,32 +107,32 @@ public class OpMenuTEST extends JFrame{
         setVisible(true);
     }
     public static void main(String[] args) {
+    	MemberFiles.loadMemberMap();
     	ProviderFiles.loadProviderMap();
-        MemberFiles.loadMemberMap();
-        new OperatorMenu(); //opens Manager Menu
+        new OperatorMenu(); //opens Operator Menu
         ProviderFiles.save();
         MemberFiles.save();
 	}
 }
-class AddMemberScreen1 extends JFrame {
+class AddMemberScreen extends JFrame {
 	private JLabel label, label1,label2,label3,label4,label5;
 	private JTextField field, field1, field2,field3,field4,field5;
 	private JButton b;
-	public AddMemberScreen1() {
+	public AddMemberScreen() {
 		super("Add Member");
 		setSize(300,200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		label = new JLabel("Enter name of new member: ");
 		field = new JTextField(20);
-		label1 = new JLabel("Enter phone number of new member: ");
-		field1 = new JTextField(20);
-		label2 = new JLabel("Enter address of new member: ");
-		field2 = new JTextField(20);
-		label3 = new JLabel("Enter city of new member: ");
-		field3 = new JTextField(20);
-		label4 = new JLabel("Enter state of new member: ");
+		label4 = new JLabel("Enter new member number: ");
 		field4 = new JTextField(20);
+		label1 = new JLabel("Enter address of new member: ");
+		field1 = new JTextField(20);
+		label2 = new JLabel("Enter city of new member: ");
+		field2 = new JTextField(20);
+		label3 = new JLabel("Enter state of new member: ");
+		field3 = new JTextField(20);
 		label5 = new JLabel("Enter ZIP code of new member: ");
 		field5 = new JTextField(20);
 		
@@ -140,14 +140,14 @@ class AddMemberScreen1 extends JFrame {
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String name = field.getText();
-				String address = field2.getText();
-				String city = field3.getText();
-				String state = field4.getText();
-				int phone = Integer.parseInt(field1.getText());
+				String address = field1.getText();
+				String city = field2.getText();
+				String state = field3.getText();
+				int number = Integer.parseInt(field4.getText());
 				int zip = Integer.parseInt(field5.getText());
-				MemberFiles.insertMember(name, phone, address, city, state, zip);
+				MemberFiles.insertMember(name, number, address, city, state, zip);
 				dispose();
-				JOptionPane.showMessageDialog(AddMemberScreen1.this, "New member created.");
+				JOptionPane.showMessageDialog(AddMemberScreen.this, "New member created.");
 				MainMenu.main(null);
 			}
 		
@@ -346,5 +346,99 @@ class UpdateMemberScreen3 extends JFrame {
         panel.add(b);
         add(panel);
         setVisible(true);
+	}
+}
+class AddProviderScreen extends JFrame {
+	private JLabel label, label1,label2,label3,label4,label5;
+	private JTextField field, field1, field2,field3,field4,field5;
+	private JButton b;
+	public AddProviderScreen() {
+		super("Add Provider");
+		setSize(300,200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		label = new JLabel("Enter name of new provider: ");
+		field = new JTextField(20);
+		label4 = new JLabel("Enter new provider number: ");
+		field4 = new JTextField(20);
+		label1 = new JLabel("Enter address of new provider: ");
+		field1 = new JTextField(20);
+		label2 = new JLabel("Enter city of new provider: ");
+		field2 = new JTextField(20);
+		label3 = new JLabel("Enter state of new provider: ");
+		field3 = new JTextField(20);
+		label5 = new JLabel("Enter ZIP code of new provider: ");
+		field5 = new JTextField(20);
+		
+		b = new JButton("Confirm");
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = field.getText();
+				String address = field1.getText();
+				String city = field2.getText();
+				String state = field3.getText();
+				int number = Integer.parseInt(field4.getText());
+				int zip = Integer.parseInt(field5.getText());
+				ProviderFiles.insertProvider(name, number, address, city, state, zip);
+				dispose();
+				JOptionPane.showMessageDialog(AddProviderScreen.this, "New provider created.");
+				MainMenu.main(null);
+			}
+		
+		});
+        JPanel panel = new JPanel(new FlowLayout());
+        panel.add(label);        //adds label, text field, and button to screen
+        panel.add(field);
+        panel.add(label1);        //adds label, text field, and button to screen
+        panel.add(field1);
+        panel.add(label2);        //adds label, text field, and button to screen
+        panel.add(field2);
+        panel.add(label3);        //adds label, text field, and button to screen
+        panel.add(field3);
+        panel.add(label4);        //adds label, text field, and button to screen
+        panel.add(field4);
+        panel.add(label5);        //adds label, text field, and button to screen
+        panel.add(field5);
+        panel.add(b);
+        add(panel);
+        setVisible(true);		
+	}
+			
+}
+class DeleteProviderScreen extends JFrame {
+	private JLabel label;
+	private JTextField field;
+	private JButton b;
+	public DeleteProviderScreen() {
+		super("Delete provider");
+		setSize(300, 200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		label = new JLabel("Enter member number of provider to delete:");
+		
+		field = new JTextField(16);
+		b = new JButton("Enter");
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = field.getText();
+				int pnum = Integer.parseInt(s);
+				Provider provider = ProviderFiles.searchProvider(pnum);
+				if(provider != null) {
+					dispose();
+					JOptionPane.showMessageDialog(DeleteProviderScreen.this, "Provider " + pnum + " Deleted.");
+				}
+				else {
+					JOptionPane.showMessageDialog(DeleteProviderScreen.this, "ERROR: Provider " + pnum + " Not Found.");
+				}
+			}
+			
+		});
+        JPanel panel = new JPanel(new FlowLayout());
+        panel.add(label);        //adds label, text field, and button to screen
+        panel.add(field);
+        panel.add(b);
+        add(panel);
+        setVisible(true);
+		
 	}
 }
