@@ -139,7 +139,7 @@ class AddMemberScreen extends JFrame {
 		b = new JButton("Confirm");
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String name = field.getText();
+				String name = field.getText();				
 				String address = field1.getText();
 				String city = field2.getText();
 				String state = field3.getText();

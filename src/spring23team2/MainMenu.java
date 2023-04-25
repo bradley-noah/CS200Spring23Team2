@@ -18,6 +18,7 @@ public class MainMenu extends JFrame{
 	private JButton button;
 	private JButton button1;
 	private JButton button2;
+	private JButton button3;
 	
     public MainMenu() {
         super("ChocAn Main Screen");
@@ -55,6 +56,17 @@ public class MainMenu extends JFrame{
 			}
 		});
 		
+		button3 = new JButton("Run Main Accounting Procedure");
+		button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == button3) {
+					MemberReport.createMemberReports();
+					ProviderReport.createProviderReports();
+					SummaryReport.createSummaryReports();
+					
+				}
+			}
+		});
         JPanel panel = new JPanel(new FlowLayout());
         
         //add button
