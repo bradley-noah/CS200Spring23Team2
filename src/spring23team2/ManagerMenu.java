@@ -106,6 +106,7 @@ class ProviderReportScreen extends JFrame {
                 	dispose(); // close current screen
 					//new GenerateProviderReportScreen();
                 	JOptionPane.showMessageDialog(ProviderReportScreen.this, "Generating Provider Report for Provider #" + providerNumber);
+                	ProviderReport.createProviderReports();
                 }
                 else {
                 	JOptionPane.showMessageDialog(ProviderReportScreen.this, "Invalid Provider Number");
@@ -142,8 +143,8 @@ class MemberReportScreen extends JFrame {
                 Member member = MemberFiles.searchMember(memberNumber); //searches member files for member
                 if(member != null) { // If member number is valid, generate the report
                 	dispose(); // close current screen
-					//new GenerateMemberReportScreen();
                 	JOptionPane.showMessageDialog(MemberReportScreen.this, "Generating Member Report for Member #" + memberNumber);
+                	MemberReport.createMemberReports();
                 }
                 else {
                 	JOptionPane.showMessageDialog(MemberReportScreen.this, "Invalid Member Number");
@@ -175,6 +176,8 @@ class SummaryReportScreen extends JFrame{
         add(label);
 
         setVisible(true);
+        
+        SummaryReport.createSummaryReports();
     }
 }
 
