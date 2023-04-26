@@ -3,18 +3,24 @@ package spring23team2;
 import javax.swing.*;
 import java.awt.FlowLayout;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
 * @author Gwynevere Deterding
 * @version 1.0
 *
 * This is the user interface for the ChocAn Manager. The ChocAn Manager can request
-* a provider report, member report, summary report, or EFT data report to be run.
+* a provider report, member report, or summary report.
 *
 */
 
 public class ManagerMenu extends JFrame{
-	private JButton button, button1, button2, button3;
+	private JButton button, button1, button2;
     public ManagerMenu() {
         super("Manager Menu");
         setSize(300, 200);
@@ -46,21 +52,12 @@ public class ManagerMenu extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == button2) { //if "Request Summary Report" button is pressed
 					dispose(); // close current screen
-					new SummaryReportScreen(); // open Summary Report screen
+					SummaryReport.createSummaryReports();
+					new TextFileViewer("SummaryReport/SummaryReport.txt");
 				}
 			}    
 		});
 		
-		button3 = new JButton("Request EFT Data Report");
-		button3.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == button3) { //if "Request EFT Data Report" button is pressed
-					dispose(); // close current screen
-					new EFTReportScreen(); // open EFT Report screen
-				}
-			}    
-		});
-
 
         JPanel panel = new JPanel(new FlowLayout());
         
@@ -68,7 +65,6 @@ public class ManagerMenu extends JFrame{
         panel.add(button);
         panel.add(button1);
         panel.add(button2);
-        panel.add(button3);
         
         add(panel);
         setVisible(true);
@@ -80,6 +76,48 @@ public class ManagerMenu extends JFrame{
         new ManagerMenu(); //opens Manager Menu
         ProviderFiles.save();
         MemberFiles.save();
+    }
+}
+
+//reads text from report file and displays it on the screen
+class TextFileViewer extends JFrame {
+    private JTextArea textArea;
+    private JButton button;
+    private JLabel label;
+    public TextFileViewer(String fileName) {
+        super("Text File Viewer");
+        setSize(300, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        textArea = new JTextArea();
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String line = null;
+            while ((line = reader.readLine()) != null) {                          
+                textArea.append(line + "\n");
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        button = new JButton("Close");
+        button.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		dispose();
+        		MainMenu.main(null);
+        	}
+        });
+        label = new JLabel("Report");
+        
+        JPanel panel = new JPanel(new FlowLayout());
+        
+        panel.add(label);
+        panel.add(scrollPane);        //adds label, text field, and button to screen
+        panel.add(button);
+        
+        add(panel);
+        setVisible(true);
     }
 }
 
@@ -104,8 +142,8 @@ class ProviderReportScreen extends JFrame {
                 Provider provider = ProviderFiles.searchProvider(providerNumber); //searches provider files for provider
                 if(provider != null) { // If provider number is valid, generate the report
                 	dispose(); // close current screen
-					//new GenerateProviderReportScreen();
-                	JOptionPane.showMessageDialog(ProviderReportScreen.this, "Generating Provider Report for Provider #" + providerNumber);
+                	ProviderReport.createProviderReports();
+                	new TextFileViewer("ProviderReports/" + providerNumber + ".txt");
                 }
                 else {
                 	JOptionPane.showMessageDialog(ProviderReportScreen.this, "Invalid Provider Number");
@@ -142,8 +180,8 @@ class MemberReportScreen extends JFrame {
                 Member member = MemberFiles.searchMember(memberNumber); //searches member files for member
                 if(member != null) { // If member number is valid, generate the report
                 	dispose(); // close current screen
-					//new GenerateMemberReportScreen();
-                	JOptionPane.showMessageDialog(MemberReportScreen.this, "Generating Member Report for Member #" + memberNumber);
+                	MemberReport.createMemberReports();
+                	new TextFileViewer("MemberReports/" + memberNumber + ".txt");
                 }
                 else {
                 	JOptionPane.showMessageDialog(MemberReportScreen.this, "Invalid Member Number");
@@ -163,33 +201,5 @@ class MemberReportScreen extends JFrame {
     
 }
 
-class SummaryReportScreen extends JFrame{
-	private JLabel label;
-	public SummaryReportScreen() {
-        super("Summary Report");
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        label = new JLabel("Generating Summary Report...");
-        
-        add(label);
-
-        setVisible(true);
-    }
-}
-
-class EFTReportScreen extends JFrame{
-	private JLabel label;
-	public EFTReportScreen() {
-        super("EFT Report");
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        label = new JLabel("Generating EFT Report...");
-        
-        add(label);
-
-        setVisible(true);
-    }
-}
 
