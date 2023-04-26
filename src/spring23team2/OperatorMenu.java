@@ -199,8 +199,10 @@ class DeleteMemberScreen extends JFrame {
 				int mnum = Integer.parseInt(s);
 				Member member = MemberFiles.searchMember(mnum);
 				if(member != null) {
+					MemberFiles.removeMember(mnum);
 					dispose();
 					JOptionPane.showMessageDialog(DeleteMemberScreen.this, "Member " + mnum + " Deleted.");
+					MainMenu.main(null);
 				}
 				else {
 					JOptionPane.showMessageDialog(DeleteMemberScreen.this, "ERROR: Member " + mnum + " Not Found.");

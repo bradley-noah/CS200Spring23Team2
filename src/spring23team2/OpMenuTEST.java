@@ -139,7 +139,7 @@ class AddMemberScreen extends JFrame {
 		b = new JButton("Confirm");
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String name = field.getText();
+				String name = field.getText();				
 				String address = field1.getText();
 				String city = field2.getText();
 				String state = field3.getText();
@@ -190,8 +190,10 @@ class DeleteMemberScreen extends JFrame {
 				int mnum = Integer.parseInt(s);
 				Member member = MemberFiles.searchMember(mnum);
 				if(member != null) {
+					MemberFiles.removeMember(mnum);
 					dispose();
 					JOptionPane.showMessageDialog(DeleteMemberScreen.this, "Member " + mnum + " Deleted.");
+					MainMenu.main(null);
 				}
 				else {
 					JOptionPane.showMessageDialog(DeleteMemberScreen.this, "ERROR: Member " + mnum + " Not Found.");

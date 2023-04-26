@@ -18,6 +18,7 @@ public class MainMenu extends JFrame{
 	private JButton button;
 	private JButton button1;
 	private JButton button2;
+	private JButton button3;
 	
     public MainMenu() {
         super("ChocAn Main Screen");
@@ -55,6 +56,17 @@ public class MainMenu extends JFrame{
 			}
 		});
 		
+		button3 = new JButton("Run Main Accounting Procedure");
+		button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == button3) {
+					MemberReport.createMemberReports();
+					ProviderReport.createProviderReports();
+					SummaryReport.createSummaryReports();
+					
+				}
+			}
+		});
         JPanel panel = new JPanel(new FlowLayout());
         
         //add button
@@ -64,6 +76,8 @@ public class MainMenu extends JFrame{
         
         add(panel);
         setVisible(true);
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
     
     public static void main(String[] args) {
@@ -142,6 +156,7 @@ class ManagerLoginScreen extends JFrame {
                 if (ManagerFiles.searchManager(number) == null) {
                 	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered an invalid number");
                 } else {
+                	dispose();
                 	ManagerMenu.main(null);
                 }
             }
@@ -150,7 +165,7 @@ class ManagerLoginScreen extends JFrame {
         // Create a new panel to hold the input components
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new FlowLayout());
-        inputPanel.add(new JLabel("Enter your Provider Code: "));
+        inputPanel.add(new JLabel("Enter your Manager Code: "));
         inputPanel.add(textField);
         inputPanel.add(submitButton);
 
@@ -184,7 +199,8 @@ class OperatorLoginScreen extends JFrame {
                 if (OperatorFiles.searchOperator(number) == null) {
                 	JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	OperatorMenu.main(null);;
+                	dispose();
+                	OperatorMenu.main(null);
                 }
             }
        });
