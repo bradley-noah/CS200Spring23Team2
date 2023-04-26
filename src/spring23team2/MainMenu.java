@@ -22,7 +22,7 @@ public class MainMenu extends JFrame{
 	
     public MainMenu() {
         super("ChocAn Main Screen");
-        setSize(300, 200);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //add more buttons
@@ -101,7 +101,7 @@ class ProviderLoginScreen extends JFrame {
 	
     public ProviderLoginScreen() {
         super("Provider Login");
-        setSize(300, 200);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		textField = new JTextField(20);
@@ -131,7 +131,6 @@ class ProviderLoginScreen extends JFrame {
         getContentPane().add(inputPanel);
 
         // Set the frame size and make it visible
-        setSize(400, 400);
         setVisible(true);        
     }
 }
@@ -142,7 +141,7 @@ class ManagerLoginScreen extends JFrame {
 	
     public ManagerLoginScreen() {
         super("Manager Login");
-        setSize(300, 200);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		textField = new JTextField(20);
@@ -173,7 +172,6 @@ class ManagerLoginScreen extends JFrame {
         getContentPane().add(inputPanel);
 
         // Set the frame size and make it visible
-        setSize(400, 400);
         setVisible(true);        
     }
 }
@@ -185,7 +183,7 @@ class OperatorLoginScreen extends JFrame {
 	
 	public OperatorLoginScreen() {
 		super("Operator Login");
-        setSize(300, 200);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     	textField = new JTextField(20);
@@ -216,7 +214,6 @@ class OperatorLoginScreen extends JFrame {
         getContentPane().add(inputPanel);
 
         // Set the frame size and make it visible
-        setSize(400, 400);
         setVisible(true);        
     }
 }
