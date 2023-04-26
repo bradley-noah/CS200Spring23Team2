@@ -6,20 +6,19 @@ import java.util.Map;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 /**
+ * This is a hash map that creates all EFT records when accounting procedure is ran
  * 
- * @author Andrew Carter
- * @version 1.0
- *
- * This is a function that sends transaction data to a disk so the bank can comfirm providers are paid.
- *
+ * @author Noah Bradley
+ * @version 2.0
  */
 public class EFTRecord {
 
-	public static void createEFTReports() {
+	public static void createEFTRecords() {
 		String directoryPath = "EFTRecords/";
 		File directory = new File(directoryPath);
-		String fileName = "EFTData.txt";
+		String fileName = "EFT.txt";
 		File file = new File(directory, fileName);
 		if(!directory.exists()) {
 			directory.mkdir();
@@ -29,13 +28,15 @@ public class EFTRecord {
 			List<ProviderTransaction> transactions = entry.getValue();
 			try {
 				FileWriter writer = new FileWriter(file);
-				writer.write("Provider Name: " + String.valueOf(ProviderName) + "/n");
+				writer.write("ProviderName: " + ProviderFiles.searchProvider(ProviderNumber).getName());
 				writer.write("ProviderNumber: " + String.valueOf(ProviderNumber) + "/n");
 				int total = 0;
 				for(ProviderTransaction transaction : transactions) {
-					total += transaction.getFee(); //add all of transaction fees up to a total for each provider
+					writer.write("Service Code: " + transaction.getServiceCode() + "/n");
+					writer.write("Credit: " + transaction.getFee() + "/n");
+					total += transaction.getFee();
 				}
-				writer.write("Amount to be transferred: " + total + "/n");
+				writer.write("Total Amount to be Credited: " + total);
 				writer.close();
 				System.out.println("Saved Successfully");
 			} catch (IOException e) {
