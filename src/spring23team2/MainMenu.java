@@ -22,7 +22,7 @@ public class MainMenu extends JFrame{
 	
     public MainMenu() {
         super("ChocAn Main Screen");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //add more buttons
@@ -77,7 +77,6 @@ public class MainMenu extends JFrame{
         add(panel);
         setVisible(true);
         setLocationRelativeTo(null);
-        setResizable(false);
     }
     
     public static void main(String[] args) {
@@ -101,7 +100,7 @@ class ProviderLoginScreen extends JFrame {
 	
     public ProviderLoginScreen() {
         super("Provider Login");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		textField = new JTextField(20);
@@ -142,7 +141,7 @@ class ManagerLoginScreen extends JFrame {
 	
     public ManagerLoginScreen() {
         super("Manager Login");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		textField = new JTextField(20);
@@ -184,7 +183,7 @@ class OperatorLoginScreen extends JFrame {
 	
 	public OperatorLoginScreen() {
 		super("Operator Login");
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     	textField = new JTextField(20);
