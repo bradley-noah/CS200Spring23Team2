@@ -206,6 +206,18 @@ class BillChocAnScreen extends JFrame {
                     	errors.setText(errors.getText() + "Please ensure your comments are no longer than 100 characters. \n");
                     	noErrors = false;
                     }
+                    if(ProviderMenu.memberNum == -1) {
+                    	errors.setText(errors.getText() + "Please sign in as a valid member. \n");
+                    	noErrors = false;
+                    }
+                    try {
+                    	int value;
+                    	value = Integer.parseInt(fee.getText());
+                    }
+                    catch (NumberFormatException f) {
+                    	errors.setText(errors.getText() + "Please enter a valid fee (integer) \n");
+                    	noErrors = false;
+                    }
                     if(noErrors) {
                     	ProviderTransactionFiles.insertProviderTransaction(Integer.parseInt(providerNum.getText()), serviceDate.getText(), recievedDate.getText(), recievedTime.getText(), ProviderMenu.memberNum, MemberFiles.searchMember(ProviderMenu.memberNum).name, Integer.parseInt(serviceCode.getText()), Integer.parseInt(fee.getText()));
                     	dispose();
