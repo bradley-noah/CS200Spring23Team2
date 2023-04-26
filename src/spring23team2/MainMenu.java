@@ -76,6 +76,8 @@ public class MainMenu extends JFrame{
         
         add(panel);
         setVisible(true);
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
     
     public static void main(String[] args) {
