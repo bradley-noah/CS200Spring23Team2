@@ -85,7 +85,7 @@ public class ProviderMenu extends JFrame{
         add(panel);
         setVisible(true);
     }
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         new ProviderMenu();
     }
 }
