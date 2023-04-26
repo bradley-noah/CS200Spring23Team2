@@ -115,7 +115,8 @@ class ProviderLoginScreen extends JFrame {
                 if (ProviderFiles.searchProvider(number) == null) {
                 	JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You have entered a correct number");
+                	dispose();
+                	ProviderMenu.main(null);
                 }
             }
         });
