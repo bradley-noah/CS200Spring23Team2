@@ -156,6 +156,7 @@ class ManagerLoginScreen extends JFrame {
                 if (ManagerFiles.searchManager(number) == null) {
                 	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered an invalid number");
                 } else {
+                	dispose();
                 	ManagerMenu.main(null);
                 }
             }
@@ -164,7 +165,7 @@ class ManagerLoginScreen extends JFrame {
         // Create a new panel to hold the input components
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new FlowLayout());
-        inputPanel.add(new JLabel("Enter your Provider Code: "));
+        inputPanel.add(new JLabel("Enter your Manager Code: "));
         inputPanel.add(textField);
         inputPanel.add(submitButton);
 
@@ -198,7 +199,8 @@ class OperatorLoginScreen extends JFrame {
                 if (OperatorFiles.searchOperator(number) == null) {
                 	JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	OperatorMenu.main(null);;
+                	dispose();
+                	OperatorMenu.main(null);
                 }
             }
        });
