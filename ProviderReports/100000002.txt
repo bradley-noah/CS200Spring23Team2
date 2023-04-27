@@ -7,9 +7,18 @@ ProviderZipCode:  54481
 ----------------------------------------
 ServiceDate:  April 20
 RecievedOnDate:  April 20
+RecievedOnTime:  6:00
+MemberName:  Kiana English
+MemberNumber:  100000007
+ServiceCode:  1001
+FeesToBePaid:  50
+----------------------------------------
+ServiceDate:  April 21
+RecievedOnDate:  April 21
 RecievedOnTime:  5:00
 MemberName:  Damaris Acevedo
 MemberNumber:  100000008
 ServiceCode:  1001
 FeesToBePaid:  50
 ----------------------------------------
+
