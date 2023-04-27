@@ -73,6 +73,18 @@ public class ManagerMenu extends JFrame{
     public static void main(String[] args) {
         new ManagerMenu(); //opens Manager Menu
     }
+    
+    //searches provider files for a provider
+    public static Provider getProvider(int providerNum) {
+    	Provider provider = ProviderFiles.searchProvider(providerNum);
+    	return provider;
+    }
+    
+    //searches member files for a member
+    public static Member getMember(int memberNum) {
+    	Member member = MemberFiles.searchMember(memberNum);
+    	return member;
+    }
 }
 
 //reads text from report file and displays it on the screen
@@ -94,6 +106,7 @@ class TextFileViewer extends JFrame {
             }
             reader.close();
         } catch (IOException e) {
+        	textArea.append("No report available");
             e.printStackTrace();
         }
         
@@ -135,7 +148,7 @@ class ProviderReportScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String s = t.getText(); //gets text entered by the user
                 int providerNumber = Integer.parseInt(s); //converts string to an integer
-                Provider provider = ProviderFiles.searchProvider(providerNumber); //searches provider files for provider
+                Provider provider = ManagerMenu.getProvider(providerNumber);
                 if(provider != null) { // If provider number is valid, generate the report
                 	dispose(); // close current screen
                 	ProviderReport.createProviderReports();
@@ -173,7 +186,7 @@ class MemberReportScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String s = t.getText(); //gets text entered by the user
                 int memberNumber = Integer.parseInt(s); //converts string to an integer
-                Member member = MemberFiles.searchMember(memberNumber); //searches member files for member
+                Member member = ManagerMenu.getMember(memberNumber);
                 if(member != null) { // If member number is valid, generate the report
                 	dispose(); // close current screen
                 	MemberReport.createMemberReports();
