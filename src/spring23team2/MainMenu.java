@@ -85,12 +85,14 @@ public class MainMenu extends JFrame{
     	OperatorFiles.loadOperatorMap();
     	ProviderFiles.loadProviderMap();
     	ProviderTransactionFiles.loadProviderTransactionMap();
+    	ProviderDirectory.loadProviderDirectoryMap();
         new MainMenu();
         ManagerFiles.save();
         MemberFiles.save();
         OperatorFiles.save();
         ProviderFiles.save();
         ProviderTransactionFiles.save();
+        ProviderDirectory.save();
     }
 }
 
