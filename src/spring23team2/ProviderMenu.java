@@ -85,7 +85,7 @@ public class ProviderMenu extends JFrame{
         add(panel);
         setVisible(true);
     }
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         new ProviderMenu();
     }
 }
@@ -204,6 +204,18 @@ class BillChocAnScreen extends JFrame {
                     }
                     if(comments.getText().length() > 100) {
                     	errors.setText(errors.getText() + "Please ensure your comments are no longer than 100 characters. \n");
+                    	noErrors = false;
+                    }
+                    if(ProviderMenu.memberNum == -1) {
+                    	errors.setText(errors.getText() + "Please sign in as a valid member. \n");
+                    	noErrors = false;
+                    }
+                    try {
+                    	int value;
+                    	value = Integer.parseInt(fee.getText());
+                    }
+                    catch (NumberFormatException f) {
+                    	errors.setText(errors.getText() + "Please enter a valid fee (integer) \n");
                     	noErrors = false;
                     }
                     if(noErrors) {

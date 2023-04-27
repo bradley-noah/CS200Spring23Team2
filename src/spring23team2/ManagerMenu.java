@@ -71,11 +71,7 @@ public class ManagerMenu extends JFrame{
     }
 
     public static void main(String[] args) {
-        ProviderFiles.loadProviderMap();
-        MemberFiles.loadMemberMap();
         new ManagerMenu(); //opens Manager Menu
-        ProviderFiles.save();
-        MemberFiles.save();
     }
 }
 
