@@ -22,7 +22,7 @@ public class MainMenu extends JFrame{
 	
     public MainMenu() {
         super("ChocAn Main Screen");
-        setSize(300, 200);
+        setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //add more buttons
@@ -77,7 +77,6 @@ public class MainMenu extends JFrame{
         add(panel);
         setVisible(true);
         setLocationRelativeTo(null);
-        setResizable(false);
     }
     
     public static void main(String[] args) {
@@ -101,7 +100,7 @@ class ProviderLoginScreen extends JFrame {
 	
     public ProviderLoginScreen() {
         super("Provider Login");
-        setSize(300, 200);
+        setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		textField = new JTextField(20);
@@ -115,7 +114,8 @@ class ProviderLoginScreen extends JFrame {
                 if (ProviderFiles.searchProvider(number) == null) {
                 	JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	JOptionPane.showMessageDialog(ProviderLoginScreen.this, "You have entered a correct number");
+                	dispose();
+                	ProviderMenu.main(null);
                 }
             }
         });
@@ -131,7 +131,6 @@ class ProviderLoginScreen extends JFrame {
         getContentPane().add(inputPanel);
 
         // Set the frame size and make it visible
-        setSize(400, 400);
         setVisible(true);        
     }
 }
@@ -142,7 +141,7 @@ class ManagerLoginScreen extends JFrame {
 	
     public ManagerLoginScreen() {
         super("Manager Login");
-        setSize(300, 200);
+        setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		textField = new JTextField(20);
@@ -156,6 +155,7 @@ class ManagerLoginScreen extends JFrame {
                 if (ManagerFiles.searchManager(number) == null) {
                 	JOptionPane.showMessageDialog(ManagerLoginScreen.this, "You have entered an invalid number");
                 } else {
+                	dispose();
                 	ManagerMenu.main(null);
                 }
             }
@@ -164,7 +164,7 @@ class ManagerLoginScreen extends JFrame {
         // Create a new panel to hold the input components
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new FlowLayout());
-        inputPanel.add(new JLabel("Enter your Provider Code: "));
+        inputPanel.add(new JLabel("Enter your Manager Code: "));
         inputPanel.add(textField);
         inputPanel.add(submitButton);
 
@@ -172,7 +172,6 @@ class ManagerLoginScreen extends JFrame {
         getContentPane().add(inputPanel);
 
         // Set the frame size and make it visible
-        setSize(400, 400);
         setVisible(true);        
     }
 }
@@ -184,7 +183,7 @@ class OperatorLoginScreen extends JFrame {
 	
 	public OperatorLoginScreen() {
 		super("Operator Login");
-        setSize(300, 200);
+		setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     	textField = new JTextField(20);
@@ -198,7 +197,8 @@ class OperatorLoginScreen extends JFrame {
                 if (OperatorFiles.searchOperator(number) == null) {
                 	JOptionPane.showMessageDialog(OperatorLoginScreen.this, "You have entered an invalid number");
                 } else {
-                	OperatorMenu.main(null);;
+                	dispose();
+                	OperatorMenu.main(null);
                 }
             }
        });
@@ -214,7 +214,6 @@ class OperatorLoginScreen extends JFrame {
         getContentPane().add(inputPanel);
 
         // Set the frame size and make it visible
-        setSize(400, 400);
         setVisible(true);        
     }
 }
