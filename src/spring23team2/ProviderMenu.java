@@ -246,112 +246,7 @@ class BillChocAnVerify extends JFrame {
     }
 }
 
-class BillChocAnScreen extends JFrame {
-	public JTextField serviceDate = new JTextField(10);
-	public JTextField recievedDate = new JTextField(10);
-	public JTextField recievedTime = new JTextField(10);
-	public JTextField serviceCode = new JTextField(6);
-	public JTextField providerNum = new JTextField(9);
-	public JTextField fee = new JTextField(6);
-	public JTextField comments = new JTextField(100);
-	public JButton backToProviderMenu = new JButton("Back");
-	public JButton confirm = new JButton("Confirm");
-	public JTextArea errors = new JTextArea();
-	
-    public BillChocAnScreen () {
-        super("Bill ChocAn");
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        
-        serviceDate.setText("Service Date");
-        recievedDate.setText("Recieved Date");
-        recievedTime.setText("Recieved Time");
-        serviceCode.setText("Code");
-        providerNum.setText("Provider#");
-        fee.setText("Fee");
-        comments.setText("Comments");
-        errors.setEditable(false);
-        errors.setBorder(null);
-        errors.setText("");
-        
-        confirm.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == confirm) {
-                    Boolean noErrors = true;
-                    errors.setText("");
-                    if(serviceDate.getText().length() != 10) {
-                    	errors.setText(errors.getText() + "Please ensure the service date is 10 characters long (Format MM/DD/YYYY). \n");
-                    	noErrors = false;
-                    }
-                    if(recievedDate.getText().length() != 10) {
-                    	errors.setText(errors.getText() + "Please ensure the recieved date is 10 characters long (Format MM/DD/YYYY). \n");
-                    	noErrors = false;
-                    }
-                    if(recievedTime.getText().length() != 5) {
-                    	errors.setText(errors.getText() + "Please ensure the recieved time is 5 characters long (Format HH/MM). \n");
-                    	noErrors = false;
-                    }
-                    if(serviceCode.getText().length() != 6) {
-                    	errors.setText(errors.getText() + "Please ensure the service code is exactly 6 digits. \n");
-                    	noErrors = false;
-                    }
-                    if(providerNum.getText().length() != 9) {
-                    	errors.setText(errors.getText() + "Please ensure the provider number is exactly 9 digits. \n");
-                    	noErrors = false;
-                    }
-                    if(comments.getText().length() > 100) {
-                    	errors.setText(errors.getText() + "Please ensure your comments are no longer than 100 characters. \n");
-                    	noErrors = false;
-                    }
-                    if(ProviderMenu.memberNum == -1) {
-                    	errors.setText(errors.getText() + "Please sign in as a valid member. \n");
-                    	noErrors = false;
-                    }
-                    try {
-                    	int value;
-                    	value = Integer.parseInt(fee.getText());
-                    }
-                    catch (NumberFormatException f) {
-                    	errors.setText(errors.getText() + "Please enter a valid fee (integer) \n");
-                    	noErrors = false;
-                    }
-                    if(noErrors) {
-                    	ProviderTransactionFiles.insertProviderTransaction(Integer.parseInt(providerNum.getText()), serviceDate.getText(), recievedDate.getText(), recievedTime.getText(), ProviderMenu.memberNum, MemberFiles.searchMember(ProviderMenu.memberNum).name, Integer.parseInt(serviceCode.getText()), Integer.parseInt(fee.getText()));
-                    	dispose();
-                    }
-                }
-            }
-        });
-        
-        backToProviderMenu.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == backToProviderMenu) {
-                    dispose();
-                    new ProviderMenu(); 
-                }
-            }
-        });
-
-        JPanel panel = new JPanel(new FlowLayout());
-        add(panel);
-        
-        panel.add(serviceDate);
-        panel.add(recievedDate);
-        panel.add(recievedTime);
-        panel.add(serviceCode);
-        panel.add(providerNum);
-        panel.add(fee);
-        panel.add(comments);
-        panel.add(confirm);
-        panel.add(backToProviderMenu);
-        panel.add(errors);
-        
-        setVisible(true);
-    }
-}
-
-class RequestProviderDirectoryScreen extends JFrame {
+class BillChocAn extends JFrame {
 	
 	private JButton backToProviderMenu = new JButton("Back");
 	private JTextField serviceCode = new JTextField(6);
@@ -360,8 +255,8 @@ class RequestProviderDirectoryScreen extends JFrame {
 	private JButton confirm = new JButton("Confirm");
 	private JButton ProviderDirectoryButton = new JButton("Provider Directory");
 	
-    public RequestProviderDirectoryScreen () {
-        super("Provider Directory");
+    public BillChocAn () {
+        super("Service Code");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -399,8 +294,14 @@ class RequestProviderDirectoryScreen extends JFrame {
         		if (e.getSource() == confirm) {
         			Calendar currentTime = Calendar.getInstance();
         			String formattedTime = String.format("%02d:%02d", currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE));
+        			int ProviderNum = MainMenu.getProviderNumber();
         			String val[] = ProviderDirectory.searchDirectory(Integer.parseInt(serviceCode.getText()));
-        			ProviderTransactionFiles.insertProviderTransaction(MainMenu.getProviderNumber(), ProviderMenu.Date, ProviderMenu.Date, formattedTime, ProviderMenu.memberNum, MemberFiles.searchMember(ProviderMenu.memberNum).name, Integer.parseInt(serviceCode.getText()), Integer.parseInt(val[1]));
+        			ProviderTransactionFiles.insertProviderTransaction(ProviderNum, ProviderMenu.Date, ProviderMenu.Date, formattedTime, ProviderMenu.memberNum, MemberFiles.searchMember(ProviderMenu.memberNum).name, Integer.parseInt(serviceCode.getText()), Integer.parseInt(val[1]));
+        			ProviderTransactionFiles.save();
+        			MemberTransactionFiles.insertMemberTransaction(ProviderMenu.memberNum, ProviderMenu.Date, ProviderFiles.searchProvider(ProviderNum).getName(), val[0]);
+        			MemberTransactionFiles.save();
+        			dispose();
+        			new MainMenu();
         		}
         	}
         });
@@ -449,9 +350,9 @@ class Date extends JFrame {
                     	noErrors = false;
                     }
                     if (noErrors) {
-                    	ProviderMenu.Date = Date.getText();
+                    	ProviderMenu.Date = DateText.getText();
                     	dispose();
-                    	new RequestProviderDirectoryScreen();
+                    	new BillChocAn();
                     }
                 }
             }
