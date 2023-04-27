@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import java.time.LocalTime;
+import java.util.Calendar;
 /**
 * @author Zach Simpson
 * @version 2.0
@@ -397,8 +397,8 @@ class RequestProviderDirectoryScreen extends JFrame {
         confirm.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent e) {
         		if (e.getSource() == confirm) {
-        			LocalTime currentTime = LocalTime.now();
-        			String formattedTime = String.format("%02d:%02d", currentTime.getHour(), currentTime.getMinute());
+        			Calendar currentTime = Calendar.getInstance();
+        			String formattedTime = String.format("%02d:%02d", currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE));
         			String val[] = ProviderDirectory.searchDirectory(Integer.parseInt(serviceCode.getText()));
         			ProviderTransactionFiles.insertProviderTransaction(MainMenu.getProviderNumber(), ProviderMenu.Date, ProviderMenu.Date, formattedTime, ProviderMenu.memberNum, MemberFiles.searchMember(ProviderMenu.memberNum).name, Integer.parseInt(serviceCode.getText()), Integer.parseInt(val[1]));
         		}
