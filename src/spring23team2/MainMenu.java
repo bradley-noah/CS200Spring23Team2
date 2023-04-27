@@ -93,6 +93,7 @@ public class MainMenu extends JFrame{
         OperatorFiles.save();
         ProviderFiles.save();
         ProviderTransactionFiles.save();
+        ProviderDirectory.save();
     }
 }
 
