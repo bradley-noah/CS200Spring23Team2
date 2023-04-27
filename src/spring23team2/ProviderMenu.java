@@ -2,11 +2,17 @@ package spring23team2;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -15,6 +21,47 @@ import javax.swing.JTextField;
 * @version 2.0
 * Provider Menu
 */
+
+//reads text from report file and displays it on the screen
+class TextFileViewers extends JFrame {
+	  private JTextArea textArea;
+	  private JButton button;
+	  private JLabel label;
+	  public TextFileViewers(String fileName) {
+	      super("Text File Viewer");
+	      setSize(300, 500);
+	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      textArea = new JTextArea();
+	      JScrollPane scrollPane = new JScrollPane(textArea);
+	      try {
+	          BufferedReader reader = new BufferedReader(new FileReader(fileName));
+	          String line = null;
+	          while ((line = reader.readLine()) != null) {                          
+	              textArea.append(line + "\n");
+	          }
+	          reader.close();
+	      } catch (IOException e) {
+	          e.printStackTrace();
+	      }
+	      
+	      button = new JButton("Close");
+	      button.addActionListener(new ActionListener() {
+	      	public void actionPerformed(ActionEvent e) {
+	      		dispose();
+	      	}
+	      });
+	      label = new JLabel("Directory");
+	      
+	      JPanel panel = new JPanel(new FlowLayout());
+	      
+	      panel.add(label);
+	      panel.add(scrollPane);        //adds label, text field, and button to screen
+	      panel.add(button);
+	      
+	      add(panel);
+	      setVisible(true);
+	  }
+	}
 
 public class ProviderMenu extends JFrame{
 	public static int memberNum = -1;
@@ -39,12 +86,7 @@ public class ProviderMenu extends JFrame{
         memberNumber = new JTextField(30);
         memberNumber.setBorder(null);
         
-        if(memberNum == -1) {
-        	memberNumber.setText("No member verified");
-        }
-        else {
-        	memberNumber.setText("Member Number: " + memberNum);
-        }
+
         validateMember.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == validateMember) {
@@ -66,8 +108,7 @@ public class ProviderMenu extends JFrame{
         requestProviderDirectory.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == requestProviderDirectory) {
-                    dispose();
-                    new RequestProviderDirectoryScreen(); 
+                    new TextFileViewers("ProviderDirectory.properties");
                 }
             }
         });
@@ -122,13 +163,10 @@ class ValidateMemberScreen extends JFrame {
                 	}
                 	else if(memberNumber.getText().length() == 9) {
                 		if(MemberFiles.searchMember(Integer.parseInt(memberNumber.getText())) == null) {
-                    		status.setText("Member could not be found or does not exist.");
+                    		JOptionPane.showMessageDialog(ValidateMemberScreen.this, "Member could not be found or does not exist.");
                         }
                 		else if(MemberFiles.searchMember(Integer.parseInt(memberNumber.getText())) != null) {
-                			ProviderMenu.memberNum = Integer.parseInt(memberNumber.getText());
-                			ProviderMenu.authenticated = true;
-                			dispose();
-                			new ProviderMenu();
+                			JOptionPane.showMessageDialog(ValidateMemberScreen.this, "Valid Member");
                 		}
                 	}
                 }
