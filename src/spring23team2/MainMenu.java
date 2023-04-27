@@ -15,6 +15,7 @@ import java.awt.event.*;
 
 public class MainMenu extends JFrame{
 	
+	public static int providerNum;
 	private JButton button;
 	private JButton button1;
 	private JButton button2;
@@ -95,6 +96,10 @@ public class MainMenu extends JFrame{
         ProviderTransactionFiles.save();
         ProviderDirectory.save();
     }
+    
+	public static int getProviderNumber() {
+		return providerNum;
+	}
 }
 
 class ProviderLoginScreen extends JFrame {
@@ -115,6 +120,7 @@ class ProviderLoginScreen extends JFrame {
             	String inputValue = textField.getText();
                 int number = Integer.parseInt(inputValue);
                 if (ProviderFiles.searchProvider(number) != null) {
+                	MainMenu.providerNum = number;
                 	dispose();
                 	ProviderMenu.main(null);
                 } else {
@@ -139,7 +145,7 @@ class ProviderLoginScreen extends JFrame {
 }
 
 class ManagerLoginScreen extends JFrame {
-	
+
 	private JTextField textField;
 	
     public ManagerLoginScreen() {

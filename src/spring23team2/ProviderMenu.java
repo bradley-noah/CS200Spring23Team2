@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import java.time.LocalTime;
 /**
 * @author Zach Simpson
 * @version 2.0
@@ -23,6 +24,7 @@ import javax.swing.JTextField;
 */
 
 //reads text from report file and displays it on the screen
+
 class TextFileViewers extends JFrame {
 	  private JTextArea textArea;
 	  private JButton button;
@@ -61,10 +63,11 @@ class TextFileViewers extends JFrame {
 	      add(panel);
 	      setVisible(true);
 	  }
-	}
+}
 
 public class ProviderMenu extends JFrame{
 	public static int memberNum = -1;
+	public static String Date = "";
 	public static Boolean authenticated = true;
 	private JTextField memberNumber;
     private JButton validateMember;
@@ -100,7 +103,7 @@ public class ProviderMenu extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == billChocAn) {
                     dispose(); 
-                    new BillChocAnScreen(); 
+                    new BillChocAnVerify(); 
                 }
             }
         });
@@ -167,6 +170,63 @@ class ValidateMemberScreen extends JFrame {
                         }
                 		else if(MemberFiles.searchMember(Integer.parseInt(memberNumber.getText())) != null) {
                 			JOptionPane.showMessageDialog(ValidateMemberScreen.this, "Valid Member");
+                		}
+                	}
+                }
+            }
+        });
+        
+        JPanel panel = new JPanel(new FlowLayout());
+
+        panel.add(memberNumber);
+        panel.add(enterNumber);
+        panel.add(backToProviderMenu);
+        panel.add(status);
+        
+        
+        add(panel);
+        setVisible(true);
+    }
+}
+
+class BillChocAnVerify extends JFrame {
+	public JTextField memberNumber = new JTextField(9);
+    public JButton enterNumber = new JButton("Enter Member Number");
+    public JButton backToProviderMenu = new JButton("Back");
+    public JTextArea status = new JTextArea();
+    
+    
+    public BillChocAnVerify () {
+        super("Validate Member");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        status.setEditable(false);
+        status.setBorder(null);
+        
+        backToProviderMenu.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == backToProviderMenu) {
+                    dispose();
+                    new ProviderMenu(); 
+                }
+            }
+        });
+        
+        enterNumber.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == enterNumber) {
+                	if((memberNumber.getText() == null) || (memberNumber.getText().length() != 9)) {
+                		status.setText("Please enter a 9 digit member number.");
+                	}
+                	else if(memberNumber.getText().length() == 9) {
+                		if(MemberFiles.searchMember(Integer.parseInt(memberNumber.getText())) == null) {
+                    		JOptionPane.showMessageDialog(BillChocAnVerify.this, "Member could not be found or does not exist.");
+                        }
+                		else if(MemberFiles.searchMember(Integer.parseInt(memberNumber.getText())) != null) {
+                			ProviderMenu.memberNum = Integer.parseInt(memberNumber.getText());
+                			dispose();
+                			new Date();
                 		}
                 	}
                 }
@@ -292,10 +352,14 @@ class BillChocAnScreen extends JFrame {
 }
 
 class RequestProviderDirectoryScreen extends JFrame {
+	
 	private JButton backToProviderMenu = new JButton("Back");
 	private JTextField serviceCode = new JTextField(6);
 	private JButton requestInfo = new JButton("Request Service Info");
 	private JTextArea info = new JTextArea();
+	private JButton confirm = new JButton("Confirm");
+	private JButton ProviderDirectoryButton = new JButton("Provider Directory");
+	
     public RequestProviderDirectoryScreen () {
         super("Provider Directory");
         setSize(300, 200);
@@ -329,7 +393,25 @@ class RequestProviderDirectoryScreen extends JFrame {
                 }
             }
         });
-
+        
+        confirm.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent e) {
+        		if (e.getSource() == confirm) {
+        			LocalTime currentTime = LocalTime.now();
+        			String formattedTime = String.format("%02d:%02d", currentTime.getHour(), currentTime.getMinute());
+        			String val[] = ProviderDirectory.searchDirectory(Integer.parseInt(serviceCode.getText()));
+        			ProviderTransactionFiles.insertProviderTransaction(MainMenu.getProviderNumber(), ProviderMenu.Date, ProviderMenu.Date, formattedTime, ProviderMenu.memberNum, MemberFiles.searchMember(ProviderMenu.memberNum).name, Integer.parseInt(serviceCode.getText()), Integer.parseInt(val[1]));
+        		}
+        	}
+        });
+        
+        ProviderDirectoryButton.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent e) {
+        		if (e.getSource() == ProviderDirectoryButton) {
+        			new TextFileViewers("ProviderDirectory.properties");
+        		}
+        	}
+        });
         JPanel panel = new JPanel(new FlowLayout());
         add(panel);
         
@@ -337,6 +419,52 @@ class RequestProviderDirectoryScreen extends JFrame {
         panel.add(requestInfo);
         panel.add(backToProviderMenu);
         panel.add(info);
+        panel.add(confirm);
+        panel.add(ProviderDirectoryButton);
+        setVisible(true);
+    }
+}
+
+class Date extends JFrame {
+	private JButton Date = new JButton("Enter Date");
+	private JTextField DateText = new JTextField(6);
+	public JTextArea errors = new JTextArea();
+	
+    public Date () {
+        super("Date");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        
+        errors.setEditable(false);
+        errors.setBorder(null);
+        errors.setText("");
+        
+        Date.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == Date) {
+                	Boolean noErrors = true;
+                    if(DateText.getText().length() != 10) {
+                    	errors.setText(errors.getText() + "Please ensure the recieved date is 10 characters long (Format MM/DD/YYYY). \n");
+                    	noErrors = false;
+                    }
+                    if (noErrors) {
+                    	ProviderMenu.Date = Date.getText();
+                    	dispose();
+                    	new RequestProviderDirectoryScreen();
+                    }
+                }
+            }
+        });
+ 
+        
+
+        JPanel panel = new JPanel(new FlowLayout());
+        add(panel);
+        
+        panel.add(DateText);
+        panel.add(Date);
+        panel.add(errors);
         setVisible(true);
     }
 }
