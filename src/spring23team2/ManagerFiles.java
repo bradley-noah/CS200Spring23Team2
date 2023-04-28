@@ -68,7 +68,7 @@ public class ManagerFiles {
             prop.setProperty(Integer.toString(ManagerNumber), value);
     }
         try {
-            FileOutputStream fileOut = new FileOutputStream("maps/ManagerMap.properties");
+            FileOutputStream fileOut = new FileOutputStream("src/maps/ManagerMap.properties");
             prop.store(fileOut, "Manager Map");
             fileOut.close();
             System.out.println("Manager map saved successfully.");
@@ -86,7 +86,7 @@ public class ManagerFiles {
     public static void loadManagerMap() {
         Properties prop = new Properties();
         try {
-            FileInputStream fileIn = new FileInputStream("maps/ManagerMap.properties");
+            FileInputStream fileIn = new FileInputStream("src/maps/ManagerMap.properties");
             prop.load(fileIn);
             fileIn.close();
             for (String key : prop.stringPropertyNames()) {

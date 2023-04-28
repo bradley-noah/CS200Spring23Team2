@@ -68,7 +68,7 @@ public class MemberFiles {
             prop.setProperty(Integer.toString(MemberNumber), value);
     }
         try {
-            FileOutputStream fileOut = new FileOutputStream("maps/MemberMap.properties");
+            FileOutputStream fileOut = new FileOutputStream("src/maps/MemberMap.properties");
             prop.store(fileOut, "Member Map");
             fileOut.close();
             System.out.println("Member map saved successfully.");
@@ -85,7 +85,7 @@ public class MemberFiles {
     public static void loadMemberMap() {
         Properties prop = new Properties();
         try {
-            FileInputStream fileIn = new FileInputStream("maps/MemberMap.properties");
+            FileInputStream fileIn = new FileInputStream("src/maps/MemberMap.properties");
             prop.load(fileIn);
             fileIn.close();
             for (String key : prop.stringPropertyNames()) {

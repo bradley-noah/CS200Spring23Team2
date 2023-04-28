@@ -58,7 +58,7 @@ public class ProviderFiles {
             prop.setProperty(Integer.toString(providerNumber), value);
     }
         try {
-            FileOutputStream fileOut = new FileOutputStream("maps/providerMap.properties");
+            FileOutputStream fileOut = new FileOutputStream("src/maps/providerMap.properties");
             prop.store(fileOut, "Provider Map");
             fileOut.close();
             System.out.println("Provider map saved successfully.");
@@ -75,7 +75,7 @@ public class ProviderFiles {
     public static void loadProviderMap() {
         Properties prop = new Properties();
         try {
-            FileInputStream fileIn = new FileInputStream("maps/providerMap.properties");
+            FileInputStream fileIn = new FileInputStream("src/maps/providerMap.properties");
             prop.load(fileIn);
             fileIn.close();
             for (String key : prop.stringPropertyNames()) {
