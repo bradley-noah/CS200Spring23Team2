@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: darkred;
+	color: white;
+	text-align: center;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+hr.solid{
+	border-top: 3px solid #bbb
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+
+<h1 style="color:darkred;"><center>Chocoholics Anonymous System Analysis</center></h1>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Header Table')">Header Table</button>
+  <button class="tablinks" onclick="openTab(event, 'Task Distribution Table')">Task Distribution Table</button>
+  <button class="tablinks" onclick="openTab(event, 'Analysis Paragraph')">Analysis Paragraph</button>
+  <button class="tablinks" onclick="openTab(event, 'Stereotyped Class Diagram')">Stereotyped Class Diagram</button>
+  <button class="tablinks" onclick="openTab(event, 'Main Activity Diagram')">Main Activity Diagram</button>
+  <button class="tablinks" onclick="openTab(event, 'Activity Diagrams')">Activity Diagrams</button>
+  <button class="tablinks" onclick="openTab(event, 'Bitbucket Statistics')">Bitbucket Statistics</button>
+  
+</div>
+
+<div id="Header Table" class="tabcontent">
+<h3 style="color:darkred;"><center>Header Table</center></h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>CWID</th>
+    <th>Crimson Email</th>
+    <th>Hours Contributed</th>
+  </tr>
+  <tr>
+    <td>Noah Bradley</td>
+    <td>12291227</td>
+    <td>nobradley@crimson.ua.edu</td>
+    <td>10 hours</td>
+  </tr>
+  <tr>
+    <td>Andrew Carter</td>
+    <td>12050108</td>
+    <td>atcarter4@crimson.ua.edu</td>
+    <td>10 hours</td>
+  </tr>
+  <tr>
+    <td>Gwynevere Deterding (Submitter)</td>
+    <td>12144266</td>
+    <td>gadeterding@crimson.ua.edu</td>
+    <td>10 hours</td>
+  </tr>
+  <tr>
+    <td>Jahanvi Kathiriya</td>
+    <td>12085085</td>
+    <td>jckathiriya@crimson.ua.edu</td>
+    <td>10 hours</td>
+  </tr>
+  <tr>
+    <td>Brandon Nguyen</td>
+    <td>12160687</td>
+    <td>bhnguyen2@crimson.ua.edu</td>
+    <td>10 hours</td>
+  </tr>
+  <tr>
+    <td>Zach Simpson</td>
+    <td>12143002</td>
+    <td>zasimpson@crimson.ua.edu</td>
+    <td>10 hours</td>
+  </tr>
+</table>
+</div>
+
+<div id="Task Distribution Table" class="tabcontent">
+  <h3 style="color:darkred;"><center>Task Distribution Table</center></h3>
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Task</th>
+    <th>Total Contribution Percent</th>
+  </tr>
+  <tr>
+    <td>Noah Bradley</td>
+    <td>Stereotype Diagram, Activity Diagrams, Updated Use Case Descriptions</td>
+    <td>16.6%</td>
+  </tr>
+  <tr>
+    <td>Andrew Carter</td>
+    <td>Stereotype Diagram, Activity Diagrams, Updated Use Case Descriptions</td>
+    <td>16.6%</td>
+  </tr>
+  <tr>
+    <td>Gwynevere Deterding</td>
+    <td>Stereotype Diagram, Activity Diagrams, Updated Use Case Descriptions</td>
+    <td>16.6%</td>
+  </tr>
+  <tr>
+    <td>Jahanvi Kathiriya</td>
+    <td>Stereotype Diagram, Activity Diagrams, Updated Use Case Descriptions, Analysis Paragraph</td>
+    <td>16.6%</td>
+  </tr>
+  <tr>
+    <td>Brandon Nguyen</td>
+    <td>Stereotype Diagram, Activity Diagrams, Updated Use Case Descriptions</td>
+    <td>16.6%</td>
+  </tr>
+  <tr>
+    <td>Zach Simpson</td>
+    <td>Stereotype Diagram, Activity Diagrams, Updated Use Case Descriptions</td>
+    <td>16.6%</td>
+  </tr>
+</table>
+   
+</div>
+
+<div id="Analysis Paragraph" class="tabcontent">
+  <h3 style="color:darkred;"><center>Chocoholics Anonymous System Analysis</center></h3>
+  <p>Chocoholics Anonymous (ChocAN) is implementing a computerized system with a main module that includes separate user interfaces for operators, providers, and managers. Auxiliary modules will provide necessary functionality with access to ChocAn data center databases. User authentication will be stored in a user database, while EFT data will be stored in a financial database. A card reader and embedded computer will interact with the software. The system will interact with Acme Accounting Services and ChocAn Data Center for validation/authentication. Operators will access the user database, providers will interact with the Provider Directory, and managers will have access to the reports terminal. Project will take 3 months and use Java.</p>
+</div>
+
+<div id="Stereotyped Class Diagram" class="tabcontent">
+  <h3 style="color:darkred;"><center>Stereotyped Class Diagram</center></h3>
+  <p><center><img src = "class.png" Width = "800" Height = "800"></center></p>
+</div>
+
+<div id="Main Activity Diagram" class="tabcontent">
+  <h3 style="color:darkred;"><center>Main Activity Diagram</center></h3>
+  <p><center><img src = "activity.png" Width = "1000" Height = "800"></center></p>
+</div>
+
+<div id="Activity Diagrams" class="tabcontent">
+  <h3 style="color:darkred;"><center>Verify Provider</center></h3>
+  <p><center><img src = "verifyprovider.png" Width = "500" Height = "800"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Bill ChocAn</center></h3>
+  <p><center><img src = "billchocan.png" Width = "200" Height = "1000"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Validate Member</center></h3>
+  <p><center><img src = "validatemember.png" Width = "500" Height = "800"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Request Provider Directory</center></h3>
+  <p><center><img src = "requestproviderdirectory.png" Width = "500" Height = "600"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Request a Report</center></h3>
+  <p><center><img src = "requestreport.png" Width = "600" Height = "700"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Run Main Accounting Procedure<center></h3>
+  <p><center><img src = "runmainaccountingprocedure.png" Width = "600" Height = "700"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Verify Manager<center></h3>
+  <p><center><img src = "verifymanager.png" Width = "500" Height = "600"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Manage Member<center></h3>
+  <p><center><img src = "managemember.png" Width = "500" Height = "800"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Manage Provider</center></h3>
+  <p><center><img src = "manageprovider.png" Width = "500" Height = "600"</center></p>
+  <hr class="solid">
+  <h3 style="color:darkred;"><center>Verify Operator</center></h3>
+  <p><center><img src = "verifyoperator.png" Width = "500" Height = "600"</center></p>
+  <hr class="solid">
+
+</div>
+
+<div id="Bitbucket Statistics" class="tabcontent">
+  <h3 style="color:darkred;"><center>Bitbucket Statistics</center></h3>
+  <p><center><img src = "bitbucket.png" Width = "900" Height = "500"</center></p>
+</div>
+
+<div class="footer">
+	<p>Team 2 Project 2 CS 200</p>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html> 

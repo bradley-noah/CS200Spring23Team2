@@ -33,7 +33,7 @@ public class ProviderDirectory {
 	        }
 	    }
 
-	    /**
+	   /**
 	     * Writes all data from Map to a file data.properties
 	     * @throws IOException
 	     * @throws FileNotFoundException
@@ -55,7 +55,7 @@ public class ProviderDirectory {
 	            e.printStackTrace();
 	        }
 	    }
-
+	    
 	    /**
 	     * Writes all data from file to Map
 	     * @throws IOException
