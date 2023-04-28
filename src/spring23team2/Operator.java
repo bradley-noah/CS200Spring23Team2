@@ -3,7 +3,7 @@ package spring23team2;
 /**
  * The Operator class ...
  * 
- * @author Jahanvi Kathiriya
+ * @author Noah Bradley
  * @version 1.0
  */
 public class Operator{
