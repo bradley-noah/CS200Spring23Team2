@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This is a hash map that creates all member Records when accounting procedure is ran.
+ * This is the method that creates all member Records in the folder MemberReports.
  * 
  * @author Jahanvi Kathiriya
- * @version 1.0       
+ * @version 1.0
  * 
+ * @throws IOException
  */
 public class MemberReport {
 	public static void createMemberReports(){

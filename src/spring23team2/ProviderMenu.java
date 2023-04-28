@@ -69,7 +69,6 @@ public class ProviderMenu extends JFrame{
 	public static int memberNum = -1;
 	public static String Date = "";
 	public static Boolean authenticated = true;
-	private JTextField memberNumber;
     private JButton validateMember;
     private JButton billChocAn;
     private JButton requestProviderDirectory;
@@ -78,7 +77,7 @@ public class ProviderMenu extends JFrame{
         super("Provider Menu");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setSize(300,200); 
 
         MemberFiles.loadMemberMap();
         ProviderDirectory.loadProviderDirectoryMap();
@@ -86,8 +85,6 @@ public class ProviderMenu extends JFrame{
         validateMember = new JButton("Validate Member");
         billChocAn = new JButton("Bill ChocAn");
         requestProviderDirectory = new JButton("Request Provider Directory");
-        memberNumber = new JTextField(30);
-        memberNumber.setBorder(null);
         
 
         validateMember.addActionListener(new ActionListener(){
@@ -124,7 +121,6 @@ public class ProviderMenu extends JFrame{
         panel.add(validateMember);
         panel.add(billChocAn);
         panel.add(requestProviderDirectory);
-        panel.add(memberNumber);
         
         add(panel);
         setVisible(true);
@@ -145,7 +141,7 @@ class ValidateMemberScreen extends JFrame {
         super("Validate Member");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setSize(300,200); 
         status.setEditable(false);
         status.setBorder(null);
         
@@ -200,7 +196,7 @@ class BillChocAnVerify extends JFrame {
         super("Validate Member");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setSize(300,200); 
         status.setEditable(false);
         status.setBorder(null);
         
@@ -259,7 +255,7 @@ class BillChocAn extends JFrame {
         super("Service Code");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setSize(300,200); 
         info.setEditable(false);
         info.setBorder(null);
         
@@ -300,6 +296,7 @@ class BillChocAn extends JFrame {
         			ProviderTransactionFiles.save();
         			MemberTransactionFiles.insertMemberTransaction(ProviderMenu.memberNum, ProviderMenu.Date, ProviderFiles.searchProvider(ProviderNum).getName(), val[0]);
         			MemberTransactionFiles.save();
+        			JOptionPane.showMessageDialog(BillChocAn.this, "Transaction Complete");
         			dispose();
         			new MainMenu();
         		}
@@ -335,7 +332,7 @@ class Date extends JFrame {
         super("Date");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setSize(300,200); 
         
         errors.setEditable(false);
         errors.setBorder(null);
@@ -346,7 +343,7 @@ class Date extends JFrame {
                 if (e.getSource() == Date) {
                 	Boolean noErrors = true;
                     if(DateText.getText().length() != 10) {
-                    	errors.setText(errors.getText() + "Please ensure the recieved date is 10 characters long (Format MM/DD/YYYY). \n");
+                    	errors.setText(errors.getText() + "Please ensure the recieved date is 10 characters long (Format MM-DD-YYYY). \n");
                     	noErrors = false;
                     }
                     if (noErrors) {

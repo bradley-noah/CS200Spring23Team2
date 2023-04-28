@@ -26,7 +26,6 @@ public class MainMenu extends JFrame{
         setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //add more buttons
         button = new JButton("Provider Menu");
         button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +41,7 @@ public class MainMenu extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button1) {
                     dispose(); // close current screen
-                    new ManagerLoginScreen(); // open something else screen
+                    new ManagerLoginScreen(); // open validation screen
                 }
             }
         });
@@ -61,6 +60,7 @@ public class MainMenu extends JFrame{
 		button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == button3) {
+					//generate every report
 					MemberReport.createMemberReports();
 					ProviderReport.createProviderReports();
 					SummaryReport.createSummaryReports();
@@ -70,7 +70,7 @@ public class MainMenu extends JFrame{
 		});
         JPanel panel = new JPanel(new FlowLayout());
         
-        //add button
+        //add buttons
         panel.add(button);
         panel.add(button1);
         panel.add(button2);
@@ -81,6 +81,7 @@ public class MainMenu extends JFrame{
         setLocationRelativeTo(null);
     }
     
+    //load all of the maps
     public static void main(String[] args) {
     	ManagerFiles.loadManagerMap();
     	MemberFiles.loadMemberMap();
@@ -102,8 +103,26 @@ public class MainMenu extends JFrame{
 	public static int getProviderNumber() {
 		return providerNum;
 	}
+
+//searches provider files for a provider
+public static Provider verifyProvider(int providerNum) {
+	Provider provider = ProviderFiles.searchProvider(providerNum);
+	return provider;
 }
 
+//searches operator files for a operator
+public static Operator verifyOperator(int operatorNum) {
+	Operator operator = OperatorFiles.searchOperator(operatorNum);
+	return operator;
+}
+
+//searches manager files for a manager
+public static Manager verifyManager(int managerNum) {
+	Manager manager = ManagerFiles.searchManager(managerNum);
+	return manager;
+}
+
+//Login screen for provider
 class ProviderLoginScreen extends JFrame {
 	
 	private JTextField textField;
@@ -121,7 +140,7 @@ class ProviderLoginScreen extends JFrame {
                 // Get the value of the text field and display it
             	String inputValue = textField.getText();
                 int number = Integer.parseInt(inputValue);
-                if (ProviderFiles.searchProvider(number) != null) {
+                if (MainMenu.verifyProvider(number) != null) {
                 	MainMenu.providerNum = number;
                 	dispose();
                 	ProviderMenu.main(null);
@@ -146,6 +165,7 @@ class ProviderLoginScreen extends JFrame {
     }
 }
 
+//Login screen for manager
 class ManagerLoginScreen extends JFrame {
 
 	private JTextField textField;
@@ -163,7 +183,7 @@ class ManagerLoginScreen extends JFrame {
                 // Get the value of the text field and display it
                 String inputValue = textField.getText();
                 int number = Integer.parseInt(inputValue);
-                if (ManagerFiles.searchManager(number) != null) {
+                if (MainMenu.verifyManager(number) != null) {
                 	dispose();
                 	ManagerMenu.main(null);
                 } else {
@@ -187,7 +207,7 @@ class ManagerLoginScreen extends JFrame {
     }
 }
 
-
+//Login screen for operator
 class OperatorLoginScreen extends JFrame {
 	
 	private JTextField textField;
@@ -205,7 +225,7 @@ class OperatorLoginScreen extends JFrame {
                     // Get the value of the text field and display it
                 String inputValue = textField.getText();
                 int number = Integer.parseInt(inputValue);
-                if (OperatorFiles.searchOperator(number) != null) {
+                if (MainMenu.verifyOperator(number) != null) {
                 	dispose();
                 	OperatorMenu.main(null);
                 } else {
@@ -226,6 +246,7 @@ class OperatorLoginScreen extends JFrame {
 
         // Set the frame size and make it visible
         setVisible(true);        
-    }
+    	}
+	}
 }
 
