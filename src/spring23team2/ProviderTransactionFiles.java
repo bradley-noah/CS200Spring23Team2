@@ -66,7 +66,7 @@ public class ProviderTransactionFiles {
     	        }
     	    }
     	    try {
-    	        FileWriter fileWriter = new FileWriter("src/maps/ProviderTransactionMap.txt");
+    	        FileWriter fileWriter = new FileWriter("ProviderTransactionMap.txt");
     	        fileWriter.write(sb.toString());
     	        fileWriter.close();
     	        System.out.println("Provider Transaction map saved successfully.");
@@ -83,7 +83,7 @@ public class ProviderTransactionFiles {
     public static void loadProviderTransactionMap() {
         ProviderTransactionMap.clear();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("src/maps/ProviderTransactionMap.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ProviderTransactionMap.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(",");
