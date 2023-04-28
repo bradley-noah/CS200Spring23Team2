@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.*;
 /**
- * This is a hash map that store Provider Transactions
+ * This is a hash map that stores a list of Provider Transactions
  * 
  * @author Brandon Nguyen
  * @version 1.0       
@@ -18,7 +18,7 @@ public class ProviderTransactionFiles {
     public static HashMap<Integer, List<ProviderTransaction>> ProviderTransactionMap = new HashMap<> ();
 
     /**
-     * Inserts a new provider and their corresponding information into the map
+     * Inserts a new provider transaction and corresponding information into a list that gets put into a map
      */
     public static void insertProviderTransaction(int providerNumber, String serviceDate, String receivedDate, String receivedTime, int memberNumber, String memberName, int serviceCode, int fee) {
     	ProviderTransaction newTransaction = new ProviderTransaction(providerNumber,serviceDate, receivedDate, receivedTime, memberNumber, memberName, serviceCode, fee);
@@ -32,7 +32,7 @@ public class ProviderTransactionFiles {
     }
 
     /**
-     * Searches a provider's info with the given ProviderNumber from the map
+     * Searches a provider's transaction info with the given ProviderNumber from the map
      */
     public static List<ProviderTransaction> searchProviderTransaction(int providerNumber) {
         if (ProviderTransactionMap.containsKey(providerNumber)) {
