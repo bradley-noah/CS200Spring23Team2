@@ -1,3 +1,4 @@
+
 100000,Aerobics Session,30
 100001,Cardio Session,25
 100002,Consultation,600
