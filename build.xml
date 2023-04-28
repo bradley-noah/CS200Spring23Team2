@@ -17,31 +17,14 @@
         <pathelement location="bin"/>
         <path refid="JUnit 4.libraryclasspath"/>
     </path>
-<<<<<<< HEAD
-=======
-    <path id="run.MainMenu.classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
->>>>>>> branch 'master' of https://jckathiriya@bitbucket.org/azaman2/spring23team2.git
     <target name="init">
         <mkdir dir="bin"/>
-    	<mkdir dir="release"/>
-    	<mkdir dir="src/maps"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
                 <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
-    </target>
-    <target name="createJar" depends="build">
-        <jar destfile="release/ChocoholicsAnonymous.jar">
-        	<fileset dir="bin/" includes="**/*.class"> </fileset>
-        	<manifest>
-                <attribute name = "Main-Class" value="spring23team2.MainMenu"/>
-            </manifest>
-        </jar>
     </target>
     <target name="clean">
         <delete dir="bin"/>
@@ -70,7 +53,6 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-<<<<<<< HEAD
     <target name="FakeMain">
         <java classname="spring23team2.FakeMain" failonerror="true" fork="yes">
             <classpath refid="spring23team2.classpath"/>
@@ -85,14 +67,11 @@
             <classpath refid="spring23team2.classpath"/>
         </junit>
     </target>
-=======
->>>>>>> branch 'master' of https://jckathiriya@bitbucket.org/azaman2/spring23team2.git
     <target name="MainMenu">
         <java classname="spring23team2.MainMenu" failonerror="true" fork="yes">
             <classpath refid="spring23team2.classpath"/>
         </java>
     </target>
-<<<<<<< HEAD
     <target name="ManagerMenu">
         <java classname="spring23team2.ManagerMenu" failonerror="true" fork="yes">
             <classpath refid="spring23team2.classpath"/>
@@ -113,8 +92,6 @@
             <classpath refid="spring23team2.classpath"/>
         </java>
     </target>
-=======
->>>>>>> branch 'master' of https://jckathiriya@bitbucket.org/azaman2/spring23team2.git
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
             <fileset dir="${junit.output.dir}">

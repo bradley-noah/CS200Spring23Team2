@@ -1,8 +1,12 @@
 package spring23team2;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
@@ -60,17 +64,16 @@ public class MemberFiles {
      * @throws FileNotFoundException
      */
     public static void save() {
-        Properties prop = new Properties();
-        for (Member Member : MemberMap.values()) {
-            int MemberNumber = Member.getMemberNumber();
-            String value = Member.getName() + "," + Member.getAddress() + "," +
-            Member.getCity() + "," + Member.getState() + "," + Member.getZip();
-            prop.setProperty(Integer.toString(MemberNumber), value);
-    }
         try {
-            FileOutputStream fileOut = new FileOutputStream("src/maps/MemberMap.properties");
-            prop.store(fileOut, "Member Map");
-            fileOut.close();
+            FileWriter fileWriter = new FileWriter("MemberMap.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Member Member : MemberMap.values()) {
+                String line = Member.getMemberNumber() + "," + Member.getName() + "," + Member.getAddress() + "," +
+                        Member.getCity() + "," + Member.getState() + "," + Member.getZip();
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
             System.out.println("Member map saved successfully.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,22 +86,22 @@ public class MemberFiles {
      * @throws FileNotFoundException
      */
     public static void loadMemberMap() {
-        Properties prop = new Properties();
-        try {
-            FileInputStream fileIn = new FileInputStream("src/maps/MemberMap.properties");
-            prop.load(fileIn);
-            fileIn.close();
-            for (String key : prop.stringPropertyNames()) {
-                String[] values = prop.getProperty(key).split(",");
-                String name = values[0];
-                String address = values[1];
-                String city = values[2];
-                String state = values[3];
-                int zip = Integer.parseInt(values[4]);
-                int MemberNumber = Integer.parseInt(key);
+    	try {
+            FileReader fileReader = new FileReader("MemberMap.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] values = line.split(",");
+                int MemberNumber = Integer.parseInt(values[0]);
+                String name = values[1];
+                String address = values[2];
+                String city = values[3];
+                String state = values[4];
+                int zip = Integer.parseInt(values[5]);
                 Member Member = new Member(name, MemberNumber, address, city, state, zip);
                 MemberMap.put(MemberNumber, Member);
             }
+            bufferedReader.close();
             System.out.println("Member map loaded successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("No Member map found. Starting with empty map.");
@@ -106,5 +109,4 @@ public class MemberFiles {
             e.printStackTrace();
         }
     }
-    
 }

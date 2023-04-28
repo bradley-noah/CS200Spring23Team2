@@ -90,8 +90,8 @@ public class MainMenu extends JFrame{
     	ProviderTransactionFiles.loadProviderTransactionMap();
     	MemberTransactionFiles.loadMemberTransactionMap();
     	ProviderDirectory.loadProviderDirectoryMap();
-    	ProviderFiles.insertProvider("Cathair Maleficent",100000000,"7626 Livingston St.","Englewood","New Jersey",7631);
-        new MainMenu();
+    	ProviderTransactionFiles.insertProviderTransaction(100000001, "April 22", "April 22","5:00", 100000001, "Charles", 200, 200);
+    	new MainMenu();
         ManagerFiles.save();
         MemberFiles.save();
         OperatorFiles.save();

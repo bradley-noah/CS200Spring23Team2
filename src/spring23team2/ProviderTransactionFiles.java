@@ -1,12 +1,12 @@
 package spring23team2;
 
-import java.io.FileInputStream;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 import java.util.*;
 /**
  * This is a hash map that stores a list of Provider Transactions
@@ -50,31 +50,29 @@ public class ProviderTransactionFiles {
      * @throws FileNotFoundException
      */
     public static void save() {
-        Properties prop = new Properties();
-        for (Map.Entry<Integer, List<ProviderTransaction>> entry : ProviderTransactionMap.entrySet()) {
-            int providerNumber = entry.getKey();
-            List<ProviderTransaction> transactions = entry.getValue();
-            StringBuilder valueBuilder = new StringBuilder();
-            for (ProviderTransaction transaction : transactions) {
-                valueBuilder.append(transaction.getServiceDate()).append(",")
-                            .append(transaction.getReceivedDate()).append(",")
-                            .append(transaction.getReceivedTime()).append(",")
-                            .append(transaction.getMemberNumber()).append(",")
-                            .append(transaction.getMemberName()).append(",")
-                            .append(transaction.getServiceCode()).append(",")
-                            .append(transaction.getFee()).append("; ");
-            }
-            String value = valueBuilder.toString();
-            prop.setProperty(Integer.toString(providerNumber), value);
-        }
-        try {
-            FileOutputStream fileOut = new FileOutputStream("src/maps/ProviderTransactionMap.properties");
-            prop.store(fileOut, "Provider Transaction Map");
-            fileOut.close();
-            System.out.println("Provider Transaction map saved successfully.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	    StringBuilder sb = new StringBuilder();
+    	    for (Map.Entry<Integer, List<ProviderTransaction>> entry : ProviderTransactionMap.entrySet()) {
+    	        int providerNumber = entry.getKey();
+    	        List<ProviderTransaction> transactions = entry.getValue();
+    	        for (ProviderTransaction transaction : transactions) {
+    	            sb.append(providerNumber).append(",")
+    	              .append(transaction.getServiceDate()).append(",")
+    	              .append(transaction.getReceivedDate()).append(",")
+    	              .append(transaction.getReceivedTime()).append(",")
+    	              .append(transaction.getMemberNumber()).append(",")
+    	              .append(transaction.getMemberName()).append(",")
+    	              .append(transaction.getServiceCode()).append(",")
+    	              .append(transaction.getFee()).append("\n");
+    	        }
+    	    }
+    	    try {
+    	        FileWriter fileWriter = new FileWriter("src/maps/ProviderTransactionMap.txt");
+    	        fileWriter.write(sb.toString());
+    	        fileWriter.close();
+    	        System.out.println("Provider Transaction map saved successfully.");
+    	    } catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
     }
 
     /**
@@ -83,35 +81,32 @@ public class ProviderTransactionFiles {
      * @throws FileNotFoundException
      */
     public static void loadProviderTransactionMap() {
-        Properties prop = new Properties();
+        ProviderTransactionMap.clear();
         try {
-            FileInputStream fileIn = new FileInputStream("src/maps/ProviderTransactionMap.properties");
-            prop.load(fileIn);
-            fileIn.close();
-            for (String key : prop.stringPropertyNames()) {
-            	String[] transactions = prop.getProperty(key).split(";");
-                int providerNumber = Integer.parseInt(key);
-                for (String transaction : transactions) {
-                	String[] values = transaction.trim().split(",");
-                	if (values.length == 7) {
-                		ProviderTransaction newTransaction = new ProviderTransaction(
-                    			providerNumber,
-                    			values[0],
-                    			values[1],
-                    			values[2],
-                    			Integer.parseInt(values[3]),
-                    			values[4],
-                    			Integer.parseInt(values[5]),
-                    			Integer.parseInt(values[6])
-                    			);
-                    	if (!ProviderTransactionMap.containsKey(providerNumber)) {
-                    		List<ProviderTransaction> newTransactions = new ArrayList<>();
-                    		ProviderTransactionMap.put(providerNumber, newTransactions);
-                    	}
-                    	ProviderTransactionMap.get(providerNumber).add(newTransaction);
-                	}
+            BufferedReader reader = new BufferedReader(new FileReader("src/maps/ProviderTransactionMap.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values.length == 8) {
+                    int providerNumber = Integer.parseInt(values[0]);
+                    ProviderTransaction newTransaction = new ProviderTransaction(
+                            providerNumber,
+                            values[1],
+                            values[2],
+                            values[3],
+                            Integer.parseInt(values[4]),
+                            values[5],
+                            Integer.parseInt(values[6]),
+                            Integer.parseInt(values[7])
+                    );
+                    if (!ProviderTransactionMap.containsKey(providerNumber)) {
+                        List<ProviderTransaction> newTransactions = new ArrayList<>();
+                        ProviderTransactionMap.put(providerNumber, newTransactions);
+                    }
+                    ProviderTransactionMap.get(providerNumber).add(newTransaction);
                 }
             }
+            reader.close();
             System.out.println("Provider Transaction map loaded successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("No provider transaction map found. Starting with empty map.");
@@ -119,5 +114,4 @@ public class ProviderTransactionFiles {
             e.printStackTrace();
         }
     }
-    
 }
