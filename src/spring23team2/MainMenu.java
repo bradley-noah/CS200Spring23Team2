@@ -87,6 +87,7 @@ public class MainMenu extends JFrame{
     	OperatorFiles.loadOperatorMap();
     	ProviderFiles.loadProviderMap();
     	ProviderTransactionFiles.loadProviderTransactionMap();
+    	MemberTransactionFiles.loadMemberTransactionMap();
     	ProviderDirectory.loadProviderDirectoryMap();
         new MainMenu();
         ManagerFiles.save();
@@ -94,6 +95,7 @@ public class MainMenu extends JFrame{
         OperatorFiles.save();
         ProviderFiles.save();
         ProviderTransactionFiles.save();
+        MemberTransactionFiles.save();
         ProviderDirectory.save();
     }
     
