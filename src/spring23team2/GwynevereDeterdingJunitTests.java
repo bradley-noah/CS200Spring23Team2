@@ -15,9 +15,9 @@ public class GwynevereDeterdingJunitTests {
 	public void testSearchDirectory() {
 		//test for success
 		ProviderDirectory.loadProviderDirectoryMap();
-		String x[] = ProviderDirectory.searchDirectory(456789);
-		assertEquals(x[0], "Treatment Session");
-		assertEquals(x[1], Integer.toString(400));
+		String x[] = ProviderDirectory.searchDirectory(100000);
+		assertEquals(x[0], "Aerobics Session");
+		assertEquals(x[1], Integer.toString(30));
 		
 		//test for failure
 		String y[] = ProviderDirectory.searchDirectory(-1);

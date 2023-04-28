@@ -18,7 +18,14 @@ public class OperatorFiles {
 
     /**
      * Inserts a new Operator and their corresponding information into the map
-     */
+     * @param name
+     * @param OperatorNumber
+     * @param address
+     * @param city
+     * @param city
+     * @param state
+     * @param zip
+     * /
     public static void insertOperator(String name, int OperatorNumber, String address, String city, String state, int zip) {
         Operator newOperator = new Operator(name, OperatorNumber, address, city, state, zip);
         OperatorMap.put(OperatorNumber, newOperator);
@@ -26,6 +33,8 @@ public class OperatorFiles {
 
     /**
      * Searches a Operator's info with the given OperatorNumber from the map
+     * @param OperatorNumber
+     * @return Operator's information
      */
     public static Operator searchOperator(int OperatorNumber) {
         if (OperatorMap.containsKey(OperatorNumber)) {
@@ -38,6 +47,7 @@ public class OperatorFiles {
 
     /**
      * Removes a Operator and their info with the given OperatorNumber from the map
+     * @param OperatorNumber
      */
     public static void removeOperator(int OperatorNumber) {
         OperatorMap.remove(OperatorNumber);
@@ -45,7 +55,7 @@ public class OperatorFiles {
 
     /**
      * Writes all data from Map to a file data.properties
-     * in progress
+     * 
      * @throws IOException
      * @throws FileNotFoundException
      */
@@ -69,6 +79,7 @@ public class OperatorFiles {
 
     /**
      * Writes all data from file to Map
+     * 
      * @throws IOException
      * @throws FileNotFoundException
      */

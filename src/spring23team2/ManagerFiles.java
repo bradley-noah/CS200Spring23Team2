@@ -18,6 +18,13 @@ public class ManagerFiles {
 
     /**
      * Inserts a new Manager and their corresponding information into the map
+     * @param name
+     * @param ManagerNumber
+     * @param address
+     * @param city
+     * @param city
+     * @param state
+     * @param zip
      */
     public static void insertManager(String name, int ManagerNumber, String address, String city, String state, int zip) {
         Manager newManager = new Manager(name, ManagerNumber, address, city, state, zip);
@@ -26,6 +33,8 @@ public class ManagerFiles {
 
     /**
      * Searches a Manager's info with the given ManagerNumber from the map
+     * @param ManagerNumber
+     * @return Manager's information
      */
     public static Manager searchManager(int ManagerNumber) {
         if (ManagerMap.containsKey(ManagerNumber)) {
@@ -38,6 +47,7 @@ public class ManagerFiles {
 
     /**
      * Removes a Manager and their info with the given ManagerNumber from the map
+     * @param ManagerNumber
      */
     public static void removeManager(int ManagerNumber) {
         ManagerMap.remove(ManagerNumber);
@@ -45,7 +55,7 @@ public class ManagerFiles {
 
     /**
      * Writes all data from Map to a file data.properties
-     * in progress
+     * 
      * @throws IOException
      * @throws FileNotFoundException
      */
@@ -69,6 +79,7 @@ public class ManagerFiles {
 
     /**
      * Writes all data from file to Map
+     * 
      * @throws IOException
      * @throws FileNotFoundException
      */

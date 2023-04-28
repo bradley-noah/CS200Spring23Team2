@@ -20,7 +20,7 @@ public class NoahBradleyJUnitTests {
 		
 		//testing for failure
 		Operator wrongOperator = OperatorFiles.searchOperator(100000001);
-		assertEquals("Tennessee", wrongOperator.getState());
+		assertNotEquals("Tennessee", wrongOperator.getState());
 		}
 	
 	@Test
@@ -32,7 +32,7 @@ public class NoahBradleyJUnitTests {
 		
 		//testing for failure
 		Operator wrongOperator = OperatorFiles.searchOperator(100000001);
-		assertEquals(34787, wrongOperator.getZip());
+		assertNotEquals(34787, wrongOperator.getZip());
 		}
 	
 	@Test
@@ -44,7 +44,7 @@ public class NoahBradleyJUnitTests {
 		
 		//testing for failure
 		Operator wrongOperator = OperatorFiles.searchOperator(100000005);
-		assertEquals(100000003, wrongOperator.getOperatorNumber());
+		assertNotEquals(100000003, wrongOperator.getOperatorNumber());
 	}
 	
 

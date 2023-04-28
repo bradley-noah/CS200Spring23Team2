@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This is a hash map that creates Summary Records when accounting procedure is ran.
+ * This is the method that creates Summary Record in the folder SummaryReport.
  * 
  * @author Jahanvi Kathiriya
  * @version 1.0       
  * 
+ * @throws IOException
  */
 public class SummaryReport {
 	public static void createSummaryReports(){
