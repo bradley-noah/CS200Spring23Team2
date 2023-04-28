@@ -41,7 +41,7 @@ public class ProviderDirectory {
 	     */
 	    public static void save() {
 	    	try {
-	            FileWriter fileWriter = new FileWriter("providerDirectory.txt");
+	            FileWriter fileWriter = new FileWriter("ProviderDirectory.txt");
 	            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 	            for (Map.Entry<Integer,String[]> entry : ProviderDirectoryMap.entrySet()) {
 	            	String[] values = entry.getValue();
@@ -63,7 +63,7 @@ public class ProviderDirectory {
 	     */
 		public static void loadProviderDirectoryMap() {
 	    	try {
-	            FileReader fileReader = new FileReader("providerMap.txt");
+	            FileReader fileReader = new FileReader("ProviderDirectory.txt");
 	            BufferedReader bufferedReader = new BufferedReader(fileReader);
 	            String line;
 	            while ((line = bufferedReader.readLine()) != null) {
