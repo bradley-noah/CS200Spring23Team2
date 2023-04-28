@@ -104,26 +104,36 @@ public class MainMenu extends JFrame{
 	public static int getProviderNumber() {
 		return providerNum;
 	}
-
-//searches provider files for a provider
+/**
+ *  searches provider files for a provider
+ *  @param providerNum
+ */
 public static Provider verifyProvider(int providerNum) {
 	Provider provider = ProviderFiles.searchProvider(providerNum);
 	return provider;
 }
 
-//searches operator files for a operator
+/**
+ *  searches operator files for a operator
+ *  @param operatorNum
+ */
 public static Operator verifyOperator(int operatorNum) {
 	Operator operator = OperatorFiles.searchOperator(operatorNum);
 	return operator;
 }
 
-//searches manager files for a manager
+/**
+ *  searches manager files for a manager
+ *  @param managerNum
+ */
 public static Manager verifyManager(int managerNum) {
 	Manager manager = ManagerFiles.searchManager(managerNum);
 	return manager;
 }
 
-//Login screen for provider
+/**
+ *  Login Screen for Provider
+ */
 class ProviderLoginScreen extends JFrame {
 	
 	private JTextField textField;
@@ -166,7 +176,9 @@ class ProviderLoginScreen extends JFrame {
     }
 }
 
-//Login screen for manager
+/**
+ *  Login Screen for Manager
+ */
 class ManagerLoginScreen extends JFrame {
 
 	private JTextField textField;
@@ -208,7 +220,9 @@ class ManagerLoginScreen extends JFrame {
     }
 }
 
-//Login screen for operator
+/**
+ *  Login Screen for Operator
+ */
 class OperatorLoginScreen extends JFrame {
 	
 	private JTextField textField;

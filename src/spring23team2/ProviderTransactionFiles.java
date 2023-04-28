@@ -19,6 +19,14 @@ public class ProviderTransactionFiles {
 
     /**
      * Inserts a new provider transaction and corresponding information into a list that gets put into a map
+     * @param providerNumber
+     * @param serviceDate
+     * @param receivedDate
+     * @param receivedTime
+     * @param memberNumber
+     * @param memberName
+     * @param serviceCode
+     * @param fee
      */
     public static void insertProviderTransaction(int providerNumber, String serviceDate, String receivedDate, String receivedTime, int memberNumber, String memberName, int serviceCode, int fee) {
     	ProviderTransaction newTransaction = new ProviderTransaction(providerNumber,serviceDate, receivedDate, receivedTime, memberNumber, memberName, serviceCode, fee);
@@ -33,6 +41,7 @@ public class ProviderTransactionFiles {
 
     /**
      * Searches a provider's transaction info with the given ProviderNumber from the map
+     * @param providerNumber
      */
     public static List<ProviderTransaction> searchProviderTransaction(int providerNumber) {
         if (ProviderTransactionMap.containsKey(providerNumber)) {

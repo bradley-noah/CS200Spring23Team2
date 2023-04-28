@@ -19,6 +19,10 @@ public class MemberTransactionFiles {
 
     /**
      * Inserts a new member transaction and their corresponding information into a list that goes into the map
+     * @param memberNumber
+     * @param serviceDat
+     * @param providerName
+     * @param serviceName
      */
     public static void insertMemberTransaction(int memberNumber, String serviceDate, String providerName, String serviceName) {
     	MemberTransaction newTransaction = new MemberTransaction(memberNumber, serviceDate, providerName, serviceName);
@@ -33,6 +37,7 @@ public class MemberTransactionFiles {
 
     /**
      * Searches a provider's info with the given ProviderNumber from the map
+     * @param memberNumber
      */
     public static List<MemberTransaction> searchMemberTransaction(int memberNumber) {
         if (MemberTransactionMap.containsKey(memberNumber)) {
