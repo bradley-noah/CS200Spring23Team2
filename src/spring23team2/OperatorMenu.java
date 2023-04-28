@@ -4,9 +4,9 @@ import java.awt.FlowLayout;
 import java.awt.event.*;
 /**
  * @author Billal Amer
- * @version 1.0
+ * @version 2.0
  * Operator Menu GUI for adding, deleting, and updating providers and members
- * in the ChocAn system
+ * in the ChocAn system.
  *
  */
 public class OperatorMenu extends JFrame{
@@ -114,6 +114,7 @@ public class OperatorMenu extends JFrame{
         ProviderFiles.save();
         MemberFiles.save();
 	}
+  
 }
 class AddMemberScreen extends JFrame {
 	private JLabel label, label1,label2,label3,label4,label5;
