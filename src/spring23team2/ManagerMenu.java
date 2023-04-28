@@ -86,8 +86,9 @@ public class ManagerMenu extends JFrame{
     	return member;
     }
 }
-
-//reads text from report file and displays it on the screen
+/**
+*  Reads text from report file and displays it on the screen
+*/
 class TextFileViewer extends JFrame {
     private JTextArea textArea;
     private JButton button;
@@ -130,6 +131,9 @@ class TextFileViewer extends JFrame {
     }
 }
 
+/**
+* Screen to enter provider number to request the corresponding provider report
+*/
 class ProviderReportScreen extends JFrame {
 	private JLabel label;
 	private JTextField t;
@@ -171,6 +175,9 @@ class ProviderReportScreen extends JFrame {
     }
 }
 
+/**
+* Screen to enter member number to request the corresponding member report
+*/
 class MemberReportScreen extends JFrame {
 	private JLabel label;
 	private JTextField t;
