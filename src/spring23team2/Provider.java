@@ -3,7 +3,7 @@ package spring23team2;
 /**
  * The Provider class ...
  * 
- * @author Jahanvi Kathiriya
+ * @author Andrew Carter
  * @version 1.1  add get function for use in ProviderDirectory class
  */
 public class Provider{
