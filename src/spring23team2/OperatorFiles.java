@@ -65,7 +65,7 @@ public class OperatorFiles {
      */
     public static void save() {
         try {
-            FileWriter fileWriter = new FileWriter("/src/maps/OperatorMap.txt");
+            FileWriter fileWriter = new FileWriter("OperatorMap.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Operator Operator : OperatorMap.values()) {
                 String line = Operator.getOperatorNumber() + "," + Operator.getName() + "," + Operator.getAddress() + "," +
@@ -87,7 +87,7 @@ public class OperatorFiles {
      */
     public static void loadOperatorMap() {
     	try {
-            FileReader fileReader = new FileReader("/src/maps/OperatorMap.txt");
+            FileReader fileReader = new FileReader("OperatorMap.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {

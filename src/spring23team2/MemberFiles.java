@@ -65,7 +65,7 @@ public class MemberFiles {
      */
     public static void save() {
         try {
-            FileWriter fileWriter = new FileWriter("/release/MemberMap.txt");
+            FileWriter fileWriter = new FileWriter("MemberMap.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Member Member : MemberMap.values()) {
                 String line = Member.getMemberNumber() + "," + Member.getName() + "," + Member.getAddress() + "," +
@@ -87,7 +87,7 @@ public class MemberFiles {
      */
     public static void loadMemberMap() {
     	try {
-            FileReader fileReader = new FileReader("/release/MemberMap.txt");
+            FileReader fileReader = new FileReader("MemberMap.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
