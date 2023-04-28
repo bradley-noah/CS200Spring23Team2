@@ -70,17 +70,26 @@ public class ManagerMenu extends JFrame{
         setVisible(true);
     }
 
+    /**
+    *  Opens the Manager Menu
+    */
     public static void main(String[] args) {
         new ManagerMenu(); //opens Manager Menu
     }
     
-    //searches provider files for a provider
+    /**
+    *  Searches the provider files for a provider number
+    *  @param providerNum the provider number being searched for
+    */
     public static Provider getProvider(int providerNum) {
     	Provider provider = ProviderFiles.searchProvider(providerNum);
     	return provider;
     }
     
-    //searches member files for a member
+    /**
+     *  Searches the member files for a member number
+     *  @param memberNum the member number being searched for
+     */
     public static Member getMember(int memberNum) {
     	Member member = MemberFiles.searchMember(memberNum);
     	return member;
