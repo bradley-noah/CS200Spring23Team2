@@ -34,6 +34,7 @@ public class OperatorFiles {
     /**
      * Searches a Operator's info with the given OperatorNumber from the map
      * @param OperatorNumber
+     * @return Operator's information
      */
     public static Operator searchOperator(int OperatorNumber) {
         if (OperatorMap.containsKey(OperatorNumber)) {

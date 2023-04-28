@@ -34,6 +34,8 @@ public class MemberFiles {
     /**
      * Searches a Member's info with the given MemberNumber from the map
      * @param MemberNumber
+     * @return Member's Information
+     * 
      */
     public static Member searchMember(int MemberNumber) {
         if (MemberMap.containsKey(MemberNumber)) {

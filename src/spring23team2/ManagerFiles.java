@@ -34,6 +34,7 @@ public class ManagerFiles {
     /**
      * Searches a Manager's info with the given ManagerNumber from the map
      * @param ManagerNumber
+     * @return Manager's information
      */
     public static Manager searchManager(int ManagerNumber) {
         if (ManagerMap.containsKey(ManagerNumber)) {

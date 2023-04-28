@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This is a hash map that creates all Provider Records when accounting procedure is ran.
+ * This is the method that creates all Provider Records in the folder ProviderReports
  * 
  * @author Jahanvi Kathiriya
  * @version 1.0       
  * 
+ * @throws IOException
  */
 public class ProviderReport {
 	public static void createProviderReports(){
