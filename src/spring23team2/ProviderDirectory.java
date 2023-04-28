@@ -1,11 +1,12 @@
 package spring23team2;
 
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Properties;
 import java.util.Map;
 
 /**
@@ -39,17 +40,16 @@ public class ProviderDirectory {
 	     * @throws FileNotFoundException
 	     */
 	    public static void save() {
-	        Properties prop = new Properties();
-	        for (Map.Entry<Integer,String[]> entry : ProviderDirectoryMap.entrySet()) {
-	            int serviceCode = entry.getKey();
-	            String[] values = entry.getValue();
-	            String data = values[0] + "," + values[1];
-	            prop.setProperty(Integer.toString(serviceCode), data);
-	    }
-	        try {
-	            FileOutputStream fileOut = new FileOutputStream("src/maps/ProviderDirectory.properties");
-	            prop.store(fileOut, "Provider Directory Map");
-	            fileOut.close();
+	    	try {
+	            FileWriter fileWriter = new FileWriter("providerDirectory.txt");
+	            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+	            for (Map.Entry<Integer,String[]> entry : ProviderDirectoryMap.entrySet()) {
+	            	String[] values = entry.getValue();
+	            	String line = entry.getKey() + ","+ values[0] + "," + values[1];
+	                bufferedWriter.write(line);
+	                bufferedWriter.newLine();
+	            }
+	            bufferedWriter.close();
 	            System.out.println("Provider Directory saved successfully.");
 	        } catch (IOException e) {
 	            e.printStackTrace();
@@ -61,17 +61,21 @@ public class ProviderDirectory {
 	     * @throws IOException
 	     * @throws FileNotFoundException
 	     */
-	    public static void loadProviderDirectoryMap() {
-	        Properties prop = new Properties();
-	        try {
-	            FileInputStream fileIn = new FileInputStream("src/maps/ProviderDirectory.properties");
-	            prop.load(fileIn);
-	            fileIn.close();
-	            for (String key : prop.stringPropertyNames()) {
-	                String[] values = prop.getProperty(key).split(",");
-	                int serviceCode = Integer.parseInt(key);
-	                ProviderDirectoryMap.put(serviceCode, values);
+	    @SuppressWarnings("null")
+		public static void loadProviderDirectoryMap() {
+	    	try {
+	            FileReader fileReader = new FileReader("providerMap.txt");
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
+	            String line;
+	            while ((line = bufferedReader.readLine()) != null) {
+	                String[] values = line.split(",");
+	                int Number = Integer.parseInt(values[0]);
+	                String[] value = null;
+	                value[0] = values[1];
+	                value[1] = values[2];
+	                ProviderDirectoryMap.put(Number, value);
 	            }
+	            bufferedReader.close();
 	            System.out.println("Provider Directory map loaded successfully.");
 	        } catch (FileNotFoundException e) {
 	            System.out.println("No Provider Directory map found. Starting with empty map.");
