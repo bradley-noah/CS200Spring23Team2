@@ -70,24 +70,34 @@ public class ManagerMenu extends JFrame{
         setVisible(true);
     }
 
+    /**
+    *  Opens the Manager Menu
+    */
     public static void main(String[] args) {
         new ManagerMenu(); //opens Manager Menu
     }
     
-    //searches provider files for a provider
+    /**
+    *  Searches the provider files for a provider number
+    *  @param providerNum the provider number being searched for
+    */
     public static Provider getProvider(int providerNum) {
     	Provider provider = ProviderFiles.searchProvider(providerNum);
     	return provider;
     }
     
-    //searches member files for a member
+    /**
+     *  Searches the member files for a member number
+     *  @param memberNum the member number being searched for
+     */
     public static Member getMember(int memberNum) {
     	Member member = MemberFiles.searchMember(memberNum);
     	return member;
     }
 }
-
-//reads text from report file and displays it on the screen
+/**
+*  Reads text from report file and displays it on the screen
+*/
 class TextFileViewer extends JFrame {
     private JTextArea textArea;
     private JButton button;
@@ -130,6 +140,9 @@ class TextFileViewer extends JFrame {
     }
 }
 
+/**
+* Screen to enter provider number to request the corresponding provider report
+*/
 class ProviderReportScreen extends JFrame {
 	private JLabel label;
 	private JTextField t;
@@ -171,6 +184,9 @@ class ProviderReportScreen extends JFrame {
     }
 }
 
+/**
+* Screen to enter member number to request the corresponding member report
+*/
 class MemberReportScreen extends JFrame {
 	private JLabel label;
 	private JTextField t;
