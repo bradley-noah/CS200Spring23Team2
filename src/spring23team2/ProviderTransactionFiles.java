@@ -68,7 +68,7 @@ public class ProviderTransactionFiles {
             prop.setProperty(Integer.toString(providerNumber), value);
         }
         try {
-            FileOutputStream fileOut = new FileOutputStream("ProviderTransactionMap.properties");
+            FileOutputStream fileOut = new FileOutputStream("maps/ProviderTransactionMap.properties");
             prop.store(fileOut, "Provider Transaction Map");
             fileOut.close();
             System.out.println("Provider Transaction map saved successfully.");
@@ -85,7 +85,7 @@ public class ProviderTransactionFiles {
     public static void loadProviderTransactionMap() {
         Properties prop = new Properties();
         try {
-            FileInputStream fileIn = new FileInputStream("ProviderTransactionMap.properties");
+            FileInputStream fileIn = new FileInputStream("maps/ProviderTransactionMap.properties");
             prop.load(fileIn);
             fileIn.close();
             for (String key : prop.stringPropertyNames()) {

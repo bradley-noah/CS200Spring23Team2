@@ -68,7 +68,7 @@ public class OperatorFiles {
             prop.setProperty(Integer.toString(OperatorNumber), value);
     }
         try {
-            FileOutputStream fileOut = new FileOutputStream("OperatorMap.properties");
+            FileOutputStream fileOut = new FileOutputStream("maps/OperatorMap.properties");
             prop.store(fileOut, "Operator Map");
             fileOut.close();
             System.out.println("Operator map saved successfully.");
@@ -86,7 +86,7 @@ public class OperatorFiles {
     public static void loadOperatorMap() {
         Properties prop = new Properties();
         try {
-            FileInputStream fileIn = new FileInputStream("OperatorMap.properties");
+            FileInputStream fileIn = new FileInputStream("maps/OperatorMap.properties");
             prop.load(fileIn);
             fileIn.close();
             for (String key : prop.stringPropertyNames()) {
