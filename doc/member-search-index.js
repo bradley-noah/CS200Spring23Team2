@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"spring23team2","c":"OperatorMenu","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"spring23team2","c":"OperatorMenu","l":"OperatorMenu()","u":"%3Cinit%3E()"}];updateSearchResults();
