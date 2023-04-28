@@ -108,7 +108,7 @@ public class ProviderMenu extends JFrame{
         requestProviderDirectory.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == requestProviderDirectory) {
-                    new TextFileViewers("ProviderDirectory.properties");
+                    new TextFileViewers("ProviderDirectory.txt");
                 }
             }
         });
@@ -306,7 +306,7 @@ class BillChocAn extends JFrame {
         ProviderDirectoryButton.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent e) {
         		if (e.getSource() == ProviderDirectoryButton) {
-        			new TextFileViewers("ProviderDirectory.properties");
+        			new TextFileViewers("ProviderDirectory.txt");
         		}
         	}
         });
