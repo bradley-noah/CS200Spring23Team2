@@ -18,6 +18,13 @@ public class MemberFiles {
 
     /**
      * Inserts a new Member and their corresponding information into the map
+     * @param name
+     * @param MemberNumber
+     * @param address
+     * @param city
+     * @param city
+     * @param state
+     * @param zip
      */
     public static void insertMember(String name, int MemberNumber, String address, String city, String state, int zip) {
         Member newMember = new Member(name, MemberNumber, address, city, state, zip);
@@ -26,6 +33,7 @@ public class MemberFiles {
 
     /**
      * Searches a Member's info with the given MemberNumber from the map
+     * @param MemberNumber
      */
     public static Member searchMember(int MemberNumber) {
         if (MemberMap.containsKey(MemberNumber)) {
@@ -38,6 +46,7 @@ public class MemberFiles {
 
     /**
      * Removes a Member and their info with the given MemberNumber from the map
+     * @param MemberNumber
      */
     public static void removeMember(int MemberNumber) {
         MemberMap.remove(MemberNumber);
@@ -45,7 +54,6 @@ public class MemberFiles {
 
     /**
      * Writes all data from Map to a file data.properties
-     * in progress
      * @throws IOException
      * @throws FileNotFoundException
      */
