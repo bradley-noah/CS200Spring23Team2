@@ -90,7 +90,6 @@ public class MainMenu extends JFrame{
     	ProviderTransactionFiles.loadProviderTransactionMap();
     	MemberTransactionFiles.loadMemberTransactionMap();
     	ProviderDirectory.loadProviderDirectoryMap();
-    	ProviderTransactionFiles.insertProviderTransaction(100000001, "April 22", "April 22","5:00", 100000001, "Charles", 200, 200);
     	new MainMenu();
         ManagerFiles.save();
         MemberFiles.save();
