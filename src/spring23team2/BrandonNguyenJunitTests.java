@@ -39,14 +39,14 @@ public class BrandonNguyenJunitTests {
 	}
 	
 	@Test
-	public void testGetMemberName() {
+	public void testGetOperatorName() {
 		//testing for success
-		MemberFiles.loadMemberMap();
-		Member member = MemberFiles.searchMember(100000001);
-		assertEquals(member.getName(), "Charlee Fitzgerald");
+		OperatorFiles.loadOperatorMap();
+		Operator operator = OperatorFiles.searchOperator(100000001);
+		assertEquals(operator.getName(), "Bernardo Van");
 		
 		//testing for failure
-		assertNotEquals(member,"Gary Cruz");
+		assertNotEquals(operator,"Gary Cruz");
 	}
 	
 
