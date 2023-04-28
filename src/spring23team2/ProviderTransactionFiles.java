@@ -66,11 +66,19 @@ public class ProviderTransactionFiles {
             for (Map.Entry<Integer, List<ProviderTransaction>> entry : ProviderTransactionMap.entrySet()) {
             	int providerNumber = entry.getKey();
     	        List<ProviderTransaction> transactions = entry.getValue();
+    	        int i = 0;
     	        for (ProviderTransaction transaction : transactions) {
-    	        	String line = providerNumber + "," + transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + "\n";
+    	        	String line;
+    	        	if (i == 0) {
+    	        		line = providerNumber + "," + transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + ";";
+    	        	}
+    	        	else {
+    	        		line = transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + ";";
+    	        	}
     	        	bufferedWriter.write(line);
-                    bufferedWriter.newLine();
+    	        	i++;
     	        }
+    	        bufferedWriter.newLine();
     	        
             }
             bufferedWriter.close();
