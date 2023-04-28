@@ -47,7 +47,7 @@ public class ProviderDirectory {
 	            prop.setProperty(Integer.toString(serviceCode), data);
 	    }
 	        try {
-	            FileOutputStream fileOut = new FileOutputStream("ProviderDirectory.properties");
+	            FileOutputStream fileOut = new FileOutputStream("src/maps/ProviderDirectory.properties");
 	            prop.store(fileOut, "Provider Directory Map");
 	            fileOut.close();
 	            System.out.println("Provider Directory saved successfully.");
@@ -64,7 +64,7 @@ public class ProviderDirectory {
 	    public static void loadProviderDirectoryMap() {
 	        Properties prop = new Properties();
 	        try {
-	            FileInputStream fileIn = new FileInputStream("ProviderDirectory.properties");
+	            FileInputStream fileIn = new FileInputStream("src/maps/ProviderDirectory.properties");
 	            prop.load(fileIn);
 	            fileIn.close();
 	            for (String key : prop.stringPropertyNames()) {

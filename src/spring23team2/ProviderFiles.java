@@ -55,7 +55,7 @@ public class ProviderFiles {
             FileWriter fileWriter = new FileWriter("providerMap.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Provider provider : providerMap.values()) {
-                String line = provider.getName() + "," + provider.getAddress() + "," +
+                String line = provider.getName() + "," + provider.getProviderNumber() + "," + provider.getAddress() + "," +
                         provider.getCity() + "," + provider.getState() + "," + provider.getZip();
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
@@ -80,11 +80,11 @@ public class ProviderFiles {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] values = line.split(",");
                 String name = values[0];
-                String address = values[1];
-                String city = values[2];
-                String state = values[3];
-                int zip = Integer.parseInt(values[4]);
-                int providerNumber = providerMap.size() + 1;
+                int providerNumber = Integer.parseInt(values[2]);
+                String address = values[2];
+                String city = values[3];
+                String state = values[4];
+                int zip = Integer.parseInt(values[5]);
                 Provider provider = new Provider(name, providerNumber, address, city, state, zip);
                 providerMap.put(providerNumber, provider);
             }
