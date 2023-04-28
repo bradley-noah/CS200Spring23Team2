@@ -37,12 +37,9 @@ public class MemberTransactionFiles {
     }
 
     /**
-<<<<<<< HEAD
      * Searches a provider's info with the given ProviderNumber from the map
      * @param memberNumber
-=======
      * Searches a Member's info with the given MemberNumber from the map
->>>>>>> branch 'master' of https://bhnguyen2@bitbucket.org/azaman2/spring23team2.git
      */
     public static List<MemberTransaction> searchMemberTransaction(int memberNumber) {
         if (MemberTransactionMap.containsKey(memberNumber)) {
@@ -66,12 +63,19 @@ public class MemberTransactionFiles {
             for (Map.Entry<Integer, List<MemberTransaction>> entry : MemberTransactionMap.entrySet()) {
             	int MemberNumber = entry.getKey();
     	        List<MemberTransaction> transactions = entry.getValue();
+    	        int i = 0;
     	        for (MemberTransaction transaction : transactions) {
-    	        	String line = MemberNumber + "," + transaction.getServiceDate()+ "," +transaction.getProviderName() + "," + transaction.getServiceName() + "\n";
+    	        	String line;
+    	        	if (i == 0) {
+    	        		line = MemberNumber + "," + transaction.getServiceDate()+ "," +transaction.getProviderName() + "," + transaction.getServiceName() + ";";
+    	        	}
+    	        	else {
+    	        		line = transaction.getServiceDate()+ "," +transaction.getProviderName() + "," + transaction.getServiceName() + ";";
+    	        	}
     	        	bufferedWriter.write(line);
-                    bufferedWriter.newLine();
+    	        	i++;
     	        }
-    	        
+    	        bufferedWriter.newLine();    	        
             }
             bufferedWriter.close();
             System.out.println("Member Transaction map saved successfully.");
@@ -84,6 +88,7 @@ public class MemberTransactionFiles {
      * Writes all data from file to Map
      * @throws IOException
      * @throws FileNotFoundException
+     * 
      */
     public static void loadMemberTransactionMap() {
         MemberTransactionMap.clear();
