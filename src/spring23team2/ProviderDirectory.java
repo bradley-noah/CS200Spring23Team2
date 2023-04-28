@@ -61,7 +61,6 @@ public class ProviderDirectory {
 	     * @throws IOException
 	     * @throws FileNotFoundException
 	     */
-	    @SuppressWarnings("null")
 		public static void loadProviderDirectoryMap() {
 	    	try {
 	            FileReader fileReader = new FileReader("providerMap.txt");
@@ -70,7 +69,7 @@ public class ProviderDirectory {
 	            while ((line = bufferedReader.readLine()) != null) {
 	                String[] values = line.split(",");
 	                int Number = Integer.parseInt(values[0]);
-	                String[] value = null;
+	                String[] value = new String[2];
 	                value[0] = values[1];
 	                value[1] = values[2];
 	                ProviderDirectoryMap.put(Number, value);
