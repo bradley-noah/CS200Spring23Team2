@@ -1,6 +1,7 @@
 package spring23team2;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -50,29 +51,24 @@ public class ProviderTransactionFiles {
      * @throws FileNotFoundException
      */
     public static void save() {
-    	    StringBuilder sb = new StringBuilder();
-    	    for (Map.Entry<Integer, List<ProviderTransaction>> entry : ProviderTransactionMap.entrySet()) {
-    	        int providerNumber = entry.getKey();
+    	try {
+            FileWriter fileWriter = new FileWriter("ProviderTransactionMap.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Map.Entry<Integer, List<ProviderTransaction>> entry : ProviderTransactionMap.entrySet()) {
+            	int providerNumber = entry.getKey();
     	        List<ProviderTransaction> transactions = entry.getValue();
     	        for (ProviderTransaction transaction : transactions) {
-    	            sb.append(providerNumber).append(",")
-    	              .append(transaction.getServiceDate()).append(",")
-    	              .append(transaction.getReceivedDate()).append(",")
-    	              .append(transaction.getReceivedTime()).append(",")
-    	              .append(transaction.getMemberNumber()).append(",")
-    	              .append(transaction.getMemberName()).append(",")
-    	              .append(transaction.getServiceCode()).append(",")
-    	              .append(transaction.getFee()).append("\n");
+    	        	String line = providerNumber + "," + transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + "\n";
+    	        	bufferedWriter.write(line);
+                    bufferedWriter.newLine();
     	        }
-    	    }
-    	    try {
-    	        FileWriter fileWriter = new FileWriter("ProviderTransactionMap.txt");
-    	        fileWriter.write(sb.toString());
-    	        fileWriter.close();
-    	        System.out.println("Provider Transaction map saved successfully.");
-    	    } catch (IOException e) {
-    	        e.printStackTrace();
-    	    }
+    	        
+            }
+            bufferedWriter.close();
+            System.out.println("Operator map saved successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -83,9 +79,10 @@ public class ProviderTransactionFiles {
     public static void loadProviderTransactionMap() {
         ProviderTransactionMap.clear();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("ProviderTransactionMap.txt"));
+        	FileReader fileReader = new FileReader("ProviderTransactionMap.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values.length == 8) {
                     int providerNumber = Integer.parseInt(values[0]);
@@ -106,7 +103,7 @@ public class ProviderTransactionFiles {
                     ProviderTransactionMap.get(providerNumber).add(newTransaction);
                 }
             }
-            reader.close();
+            bufferedReader.close();
             System.out.println("Provider Transaction map loaded successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("No provider transaction map found. Starting with empty map.");
