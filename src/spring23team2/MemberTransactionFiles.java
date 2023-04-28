@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.*;
 /**
- * This is a hash map that store Member Transactions
+ * This is a hash map that stores a list of Member Transactions
  * 
  * @author Brandon Nguyen
  * @version 1.0       
@@ -18,7 +18,7 @@ public class MemberTransactionFiles {
     public static HashMap<Integer, List<MemberTransaction>> MemberTransactionMap = new HashMap<> ();
 
     /**
-     * Inserts a new provider and their corresponding information into the map
+     * Inserts a new member transaction and their corresponding information into a list that goes into the map
      */
     public static void insertMemberTransaction(int memberNumber, String serviceDate, String providerName, String serviceName) {
     	MemberTransaction newTransaction = new MemberTransaction(memberNumber, serviceDate, providerName, serviceName);
