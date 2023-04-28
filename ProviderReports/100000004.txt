@@ -12,4 +12,8 @@ MemberName:  Kiana English
 MemberNumber:  100000007
 ServiceCode:  1001
 FeesToBePaid:  50
+<<<<<<< HEAD
 ----------------------------------------
+=======
+----------------------------------------
+>>>>>>> branch 'master' of https://nobradley@bitbucket.org/azaman2/spring23team2.git
