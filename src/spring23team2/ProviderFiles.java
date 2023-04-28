@@ -1,11 +1,12 @@
 package spring23team2;
 
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Properties;
 
 /**
  * This is a hash map that store Provider records
@@ -50,17 +51,16 @@ public class ProviderFiles {
      * @throws FileNotFoundException
      */
     public static void save() {
-        Properties prop = new Properties();
-        for (Provider provider : providerMap.values()) {
-            int providerNumber = provider.getProviderNumber();
-            String value = provider.getName() + "," + provider.getAddress() + "," +
-            provider.getCity() + "," + provider.getState() + "," + provider.getZip();
-            prop.setProperty(Integer.toString(providerNumber), value);
-    }
         try {
-            FileOutputStream fileOut = new FileOutputStream("providerMap.properties");
-            prop.store(fileOut, "Provider Map");
-            fileOut.close();
+            FileWriter fileWriter = new FileWriter("providerMap.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Provider provider : providerMap.values()) {
+                String line = provider.getName() + "," + provider.getAddress() + "," +
+                        provider.getCity() + "," + provider.getState() + "," + provider.getZip();
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
             System.out.println("Provider map saved successfully.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,22 +73,22 @@ public class ProviderFiles {
      * @throws FileNotFoundException
      */
     public static void loadProviderMap() {
-        Properties prop = new Properties();
         try {
-            FileInputStream fileIn = new FileInputStream("providerMap.properties");
-            prop.load(fileIn);
-            fileIn.close();
-            for (String key : prop.stringPropertyNames()) {
-                String[] values = prop.getProperty(key).split(",");
+            FileReader fileReader = new FileReader("providerMap.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] values = line.split(",");
                 String name = values[0];
                 String address = values[1];
                 String city = values[2];
                 String state = values[3];
                 int zip = Integer.parseInt(values[4]);
-                int providerNumber = Integer.parseInt(key);
+                int providerNumber = providerMap.size() + 1;
                 Provider provider = new Provider(name, providerNumber, address, city, state, zip);
                 providerMap.put(providerNumber, provider);
             }
+            bufferedReader.close();
             System.out.println("Provider map loaded successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("No provider map found. Starting with empty map.");

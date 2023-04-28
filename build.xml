@@ -10,47 +10,11 @@
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
     <path id="JUnit 4.libraryclasspath">
-        <pathelement location="../../.p2/pool/plugins/org.junit_4.13.2.v20211018-1956.jar"/>
-        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+        <pathelement location="../../Desktop/eclipse/plugins/org.junit_4.13.2.v20211018-1956.jar"/>
+        <pathelement location="../../Desktop/eclipse/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
     </path>
     <path id="spring23team2.classpath">
         <pathelement location="bin"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.BrandonNguyenJunitTests.classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.FakeMain.classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.FakeOp.classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.MainMenu (1).classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.MainMenu (2).classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.MainMenu.classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.ManagerMenu.classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.OpMenuTEST.classpath">
-        <path refid="spring23team2.classpath"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <path id="run.ProviderMenu.classpath">
-        <path refid="spring23team2.classpath"/>
         <path refid="JUnit 4.libraryclasspath"/>
     </path>
     <target name="init">
@@ -89,53 +53,43 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="BrandonNguyenJunitTests">
+    <target name="FakeMain">
+        <java classname="spring23team2.FakeMain" failonerror="true" fork="yes">
+            <classpath refid="spring23team2.classpath"/>
+        </java>
+    </target>
+    <target name="JahanviKathiriyaJunitTests">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="spring23team2.BrandonNguyenJunitTests" todir="${junit.output.dir}"/>
+            <test name="spring23team2.JahanviKathiriyaJunitTests" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="run.BrandonNguyenJunitTests.classpath"/>
+            <classpath refid="spring23team2.classpath"/>
         </junit>
-    </target>
-    <target name="FakeMain">
-        <java classname="spring23team2.FakeMain" failonerror="true" fork="yes">
-            <classpath refid="run.FakeMain.classpath"/>
-        </java>
-    </target>
-    <target name="FakeOp">
-        <java classname="spring23team2.FakeOp" failonerror="true" fork="yes">
-            <classpath refid="run.FakeOp.classpath"/>
-        </java>
-    </target>
-    <target name="MainMenu (1)">
-        <java classname="spring23team2.MainMenu" failonerror="true" fork="yes">
-            <classpath refid="run.MainMenu (1).classpath"/>
-        </java>
-    </target>
-    <target name="MainMenu (2)">
-        <java classname="spring23team2.MainMenu" failonerror="true" fork="yes">
-            <classpath refid="run.MainMenu (2).classpath"/>
-        </java>
     </target>
     <target name="MainMenu">
         <java classname="spring23team2.MainMenu" failonerror="true" fork="yes">
-            <classpath refid="run.MainMenu.classpath"/>
+            <classpath refid="spring23team2.classpath"/>
         </java>
     </target>
     <target name="ManagerMenu">
         <java classname="spring23team2.ManagerMenu" failonerror="true" fork="yes">
-            <classpath refid="run.ManagerMenu.classpath"/>
+            <classpath refid="spring23team2.classpath"/>
+        </java>
+    </target>
+    <target name="OperatorMenu">
+        <java classname="spring23team2.OperatorMenu" failonerror="true" fork="yes">
+            <classpath refid="spring23team2.classpath"/>
+        </java>
+    </target>
+    <target name="OpMenu">
+        <java classname="spring23team2.OpMenu" failonerror="true" fork="yes">
+            <classpath refid="spring23team2.classpath"/>
         </java>
     </target>
     <target name="OpMenuTEST">
         <java classname="spring23team2.OpMenuTEST" failonerror="true" fork="yes">
-            <classpath refid="run.OpMenuTEST.classpath"/>
-        </java>
-    </target>
-    <target name="ProviderMenu">
-        <java classname="spring23team2.ProviderMenu" failonerror="true" fork="yes">
-            <classpath refid="run.ProviderMenu.classpath"/>
+            <classpath refid="spring23team2.classpath"/>
         </java>
     </target>
     <target name="junitreport">
