@@ -20,6 +20,10 @@ public class MemberTransactionFiles {
 
     /**
      * Inserts a new member transaction and their corresponding information into a list that goes into the map
+     * @param memberNumber
+     * @param serviceDat
+     * @param providerName
+     * @param serviceName
      */
     public static void insertMemberTransaction(int memberNumber, String serviceDate, String MemberName, String serviceName) {
     	MemberTransaction newTransaction = new MemberTransaction(memberNumber, serviceDate, MemberName, serviceName);
@@ -33,7 +37,12 @@ public class MemberTransactionFiles {
     }
 
     /**
+<<<<<<< HEAD
+     * Searches a provider's info with the given ProviderNumber from the map
+     * @param memberNumber
+=======
      * Searches a Member's info with the given MemberNumber from the map
+>>>>>>> branch 'master' of https://bhnguyen2@bitbucket.org/azaman2/spring23team2.git
      */
     public static List<MemberTransaction> searchMemberTransaction(int memberNumber) {
         if (MemberTransactionMap.containsKey(memberNumber)) {
