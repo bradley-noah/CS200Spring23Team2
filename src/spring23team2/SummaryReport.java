@@ -21,7 +21,7 @@ public class SummaryReport {
         if (!directory.exists()){
             directory.mkdir();
         }
-        File file = new File(directory, "SummaryReport");
+        File file = new File(directory, "SummaryReport.txt");
         
         try {
         	FileWriter writer = new FileWriter(file);
@@ -43,7 +43,7 @@ public class SummaryReport {
         	}
         	
         	writer.close();
-        	System.out.println("Saved successfully.");
+        	System.out.println("Summary Saved successfully.");
         } catch (IOException e) {
         	e.printStackTrace();
         }
