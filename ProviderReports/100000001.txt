@@ -1,0 +1,15 @@
+ProviderNumber:  100000001
+ProviderName:  Armando Mildred
+ProviderAddress:  515 Spruce St.
+ProviderCity:  Winter Garden
+ProviderState:  Florida
+ProviderZipCode:  34787
+----------------------------------------
+ServiceDate:  05-02-2023
+RecievedOnDate:  05-02-2023
+RecievedOnTime:  14:30
+MemberName:  Charlee Fitzgerald
+MemberNumber:  100000001
+ServiceCode:  100006
+FeesToBePaid:  400
+----------------------------------------
