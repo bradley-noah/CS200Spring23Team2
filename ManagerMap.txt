@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+=======
+100000005,Sadie Mccormick,515 Spruce St.,Winter Garden,Florida,34787
+100000004,Heidi Mendoza,20 Schoolhouse St.,Shelbyville,Tennessee,37160
+100000007,Virginia Sims,7084 Grand Dr.,Lewis Center,Ohio,43035
+100000006,Suzanne Buchanan,196 Talbot Dr.,Crystal Lake,Illionis,60014
+100000001,Julia Shaw,395 W. Littleton Ave.,Oakland Gardens,New York,11364
+100000000,Arlene Graham,7626 Livingston St.,Englewood,New Jersey,7631
+100000003,Arlene Bowers,49 Fairground,Marquette,Mississippi,49855
+100000002,Candace Moody,7889 Courtland Street,Stevens Point,Wisconsin,54481
+100000008,Esther Harvey,579 N. Tower St.,Clayton,NC,27520
+>>>>>>> branch 'master' of https://nobradley@bitbucket.org/azaman2/spring23team2.git

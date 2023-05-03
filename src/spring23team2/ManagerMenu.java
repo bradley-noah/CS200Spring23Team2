@@ -54,6 +54,7 @@ public class ManagerMenu extends JFrame{
 					dispose(); // close current screen
 					SummaryReport.createSummaryReports();
 					new TextFileViewer("SummaryReport/SummaryReport.txt");
+					new MainMenu();
 				}
 			}    
 		});
@@ -124,7 +125,7 @@ class TextFileViewer extends JFrame {
         button.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		dispose();
-        		MainMenu.main(null);
+        		new MainMenu();
         	}
         });
         label = new JLabel("Report");

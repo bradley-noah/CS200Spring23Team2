@@ -1,0 +1,11 @@
+MemberNumber:  100000001
+MemberName:  Charlee Fitzgerald
+MemberAddress:  395 W. Littleton Ave.
+MemberCity:  Oakland Gardens
+MemberState:  New York
+MemberZipCode:  11364
+----------------------------------------
+ServiceDate:  05-02-2023
+ProviderName:  Armando Mildred
+ServiceName:  Treatment Session
+----------------------------------------

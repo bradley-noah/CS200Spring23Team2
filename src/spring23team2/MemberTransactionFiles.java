@@ -67,10 +67,10 @@ public class MemberTransactionFiles {
     	        for (MemberTransaction transaction : transactions) {
     	        	String line;
     	        	if (i == 0) {
-    	        		line = MemberNumber + "," + transaction.getServiceDate()+ "," +transaction.getProviderName() + "," + transaction.getServiceName() + ";";
+    	        		line = MemberNumber + "," + transaction.getServiceDate()+ "," +transaction.getProviderName() + "," + transaction.getServiceName() + ",";
     	        	}
     	        	else {
-    	        		line = transaction.getServiceDate()+ "," +transaction.getProviderName() + "," + transaction.getServiceName() + ";";
+    	        		line = transaction.getServiceDate()+ "," +transaction.getProviderName() + "," + transaction.getServiceName() + ",";
     	        	}
     	        	bufferedWriter.write(line);
     	        	i++;

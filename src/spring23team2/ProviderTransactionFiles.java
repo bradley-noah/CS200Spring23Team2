@@ -70,10 +70,10 @@ public class ProviderTransactionFiles {
     	        for (ProviderTransaction transaction : transactions) {
     	        	String line;
     	        	if (i == 0) {
-    	        		line = providerNumber + "," + transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + ";";
+    	        		line = providerNumber + "," + transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + ",";
     	        	}
     	        	else {
-    	        		line = transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + ";";
+    	        		line = transaction.getServiceDate()+ "," + transaction.getReceivedDate() + "," + transaction.getReceivedTime() + "," + transaction.getMemberNumber() + "," + transaction.getMemberName() + "," + transaction.getServiceCode() + "," + transaction.getFee() + ",";
     	        	}
     	        	bufferedWriter.write(line);
     	        	i++;
@@ -103,6 +103,8 @@ public class ProviderTransactionFiles {
                 String[] values = line.split(",");
                 if (values.length == 8) {
                     int providerNumber = Integer.parseInt(values[0]);
+                    String fee = values[7];
+                    String newFee = fee.substring(0, fee.length()-1);
                     ProviderTransaction newTransaction = new ProviderTransaction(
                             providerNumber,
                             values[1],
@@ -111,7 +113,7 @@ public class ProviderTransactionFiles {
                             Integer.parseInt(values[4]),
                             values[5],
                             Integer.parseInt(values[6]),
-                            Integer.parseInt(values[7])
+                            Integer.parseInt(newFee)
                     );
                     if (!ProviderTransactionMap.containsKey(providerNumber)) {
                         List<ProviderTransaction> newTransactions = new ArrayList<>();
