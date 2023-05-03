@@ -63,6 +63,7 @@ class TextFileViewers extends JFrame {
 	      add(panel);
 	      setVisible(true);
 	  }
+	  
 }
 
 public class ProviderMenu extends JFrame{
@@ -72,6 +73,16 @@ public class ProviderMenu extends JFrame{
     private JButton validateMember;
     private JButton billChocAn;
     private JButton requestProviderDirectory;
+    
+    public static Member getMember(int memberNum) {
+    	Member member = MemberFiles.searchMember(memberNum);
+    	return member;
+    }
+    
+    public static String[] getService(int serviceCode) {
+    	String[] service = ProviderDirectory.searchDirectory(serviceCode);
+    	return service;
+    }
     
     public ProviderMenu() {
         super("Provider Menu");
@@ -136,6 +147,10 @@ class ValidateMemberScreen extends JFrame {
     public JButton backToProviderMenu = new JButton("Back");
     public JTextArea status = new JTextArea();
     
+    public static Member getMember(int memberNum) {
+    	Member member = MemberFiles.searchMember(memberNum);
+    	return member;
+    }
     
     public ValidateMemberScreen () {
         super("Validate Member");
@@ -161,10 +176,10 @@ class ValidateMemberScreen extends JFrame {
                 		status.setText("Please enter a 9 digit member number.");
                 	}
                 	else if(memberNumber.getText().length() == 9) {
-                		if(MemberFiles.searchMember(Integer.parseInt(memberNumber.getText())) == null) {
+                		if(getMember(Integer.parseInt(memberNumber.getText())) == null) {
                     		JOptionPane.showMessageDialog(ValidateMemberScreen.this, "Member could not be found or does not exist.");
                         }
-                		else if(MemberFiles.searchMember(Integer.parseInt(memberNumber.getText())) != null) {
+                		else if(getMember(Integer.parseInt(memberNumber.getText())) != null) {
                 			JOptionPane.showMessageDialog(ValidateMemberScreen.this, "Valid Member");
                 		}
                 	}
@@ -251,6 +266,11 @@ class BillChocAn extends JFrame {
 	private JButton confirm = new JButton("Confirm");
 	private JButton ProviderDirectoryButton = new JButton("Provider Directory");
 	
+	public static String[] getService(int serviceCode) {
+    	String[] service = ProviderDirectory.searchDirectory(serviceCode);
+    	return service;
+    }
+	
     public BillChocAn () {
         super("Service Code");
         setSize(300, 200);
@@ -274,11 +294,11 @@ class BillChocAn extends JFrame {
                     if(serviceCode.getText().length() != 6) {
                     	info.setText("Please enter a valid 6 digit code. ");
                     }
-                    else if(ProviderDirectory.searchDirectory(Integer.parseInt(serviceCode.getText())) == null) {
+                    else if(getService(Integer.parseInt(serviceCode.getText())) == null) {
                     	info.setText("Entered service code does not exist. ");
                     }
                     else {
-                    	String val[] = ProviderDirectory.searchDirectory(Integer.parseInt(serviceCode.getText()));
+                    	String val[] = getService(Integer.parseInt(serviceCode.getText()));
                     	info.setText("Service Name: " + val[0] + "\n" + "Service Fee: $" + val[1]);
                     }
                 }
