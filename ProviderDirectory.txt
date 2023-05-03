@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 100001,Cardio Session,25
 100000,Aerobics Session,30
 100003,Dietitian Session,350
@@ -7,4 +5,3 @@
 100005,Internist Session,200
 100004,Exercise Session,40
 100006,Treatment Session,400
->>>>>>> branch 'master' of https://nobradley@bitbucket.org/azaman2/spring23team2.git

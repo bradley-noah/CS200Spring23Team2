@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 100000005,Armando Mildred,515 Spruce St.,Winter Garden,Florida,34787
 100000004,Hatim Gemariah,20 Schoolhouse St.,Shelbyville,Tennessee,37160
 100000007,Anil Stanka,7084 Grand Dr.,Lewis Center,Ohio,43035
@@ -9,4 +7,3 @@
 100000003,Straton Matilda,49 Fairground,Marquette,Mississippi,49855
 100000002,Batsheva Xaviera,7889 Courtland Street,Stevens Point,Wisconsin,54481
 100000008,Lena Ntombi,579 N. Tower St.,Clayton,NC,27520
->>>>>>> branch 'master' of https://nobradley@bitbucket.org/azaman2/spring23team2.git
