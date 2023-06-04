@@ -1,0 +1,7 @@
+100001,Cardio Session,25
+100000,Aerobics Session,30
+100003,Dietitian Session,350
+100002,Consultation,600
+100005,Internist Session,200
+100004,Exercise Session,40
+100006,Treatment Session,400
